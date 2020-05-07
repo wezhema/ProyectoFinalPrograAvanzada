@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
-
+using Proyecto_Wei_Principal;
 
 namespace Proyecto_Wei_Cliente
 {
