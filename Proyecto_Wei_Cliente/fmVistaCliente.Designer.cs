@@ -101,6 +101,7 @@
             this.btnCrearViajeCliente.TabIndex = 8;
             this.btnCrearViajeCliente.Text = "Crear viaje";
             this.btnCrearViajeCliente.UseVisualStyleBackColor = true;
+            this.btnCrearViajeCliente.Click += new System.EventHandler(this.btnCrearViajeCliente_Click);
             // 
             // btnSalirCliente
             // 

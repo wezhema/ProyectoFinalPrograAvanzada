@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using Proyecto_Wei_Principal;
+using System.Data.SqlClient;
 
 namespace Proyecto_Wei_Servidor
 {
@@ -18,6 +20,8 @@ namespace Proyecto_Wei_Servidor
         TcpListener tcpListener;
         Thread subprocesoEscucharClientes;
         bool servidorIniciado;//Bool para retornar si el servidor está iniciado o no
+
+        DatosDB datos = new DatosDB();
 
         public fmVistaServidor()
         {
@@ -93,6 +97,34 @@ namespace Proyecto_Wei_Servidor
             tcpListener.Stop();
             btnIniciarServidor.Enabled = true;
             btnDetenerServidor.Enabled = false;
+        }
+
+        private void btnLoginServidor_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtUsuarioAdmin.Text))//Si el campo esta rellenado, continue, si no, arroja error
+            {
+                if (datos.LoginAdministrador(txtUsuarioAdmin.Text, txtPassAdmin.Text))
+                {
+
+                    MessageBox.Show(string.Format("Inicio de sesión con éxito.", "Administrador conectado", MessageBoxButtons.OK, MessageBoxIcon.Information));
+                    btnLoginServidor.Enabled = false;
+                    txtUsuarioAdmin.ReadOnly = true;
+                    txtPassAdmin.ReadOnly = true;
+
+                }
+                else
+                {
+                    MessageBox.Show("Fallo al iniciar sesión.", "Error intente de nuevo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+            }
+
+        }
+
+        private void btnAprobarServidor_Click(object sender, EventArgs e)
+        {
+            fmVistaAprobarClientes vAprobarClientes = new fmVistaAprobarClientes();
+            vAprobarClientes.Show();
         }
     }
 }

@@ -11,12 +11,13 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using Proyecto_Wei_Principal;
+using System.Data.SqlClient;
 
 namespace Proyecto_Wei_Cliente
 {
     public partial class fmVistaCliente : Form
     {
-        DatosDB datos = new DatosDB();//asd
+        DatosDB datos = new DatosDB();
 
         bool clienteConectado;
         TcpClient cliente;
@@ -35,7 +36,7 @@ namespace Proyecto_Wei_Cliente
         {
             if (!string.IsNullOrEmpty(txtUsuarioCliente.Text))//Si el campo esta rellenado, continue, si no, arroja error
             {
-                if (datos.Login(txtUsuarioCliente.Text, txtContraseniaCliente.Text))
+                if (datos.LoginCliente(txtUsuarioCliente.Text, txtContraseniaCliente.Text))
                 {
                     try
                     {
@@ -53,7 +54,7 @@ namespace Proyecto_Wei_Cliente
 
                         lblEstadoCliente.Text = "Conectado al servidor 127.0.0.1, 30000";
                         clienteConectado = true;
-                        MessageBox.Show(string.Format("Conexión con éxito.", "Cliente conectado", MessageBoxButtons.OK, MessageBoxIcon.Information));
+                        MessageBox.Show(string.Format("Conexión con éxito.", "Usuario conectado", MessageBoxButtons.OK, MessageBoxIcon.Information));
                         btnLoginCliente.Enabled = false;
                         btnDesconectar.Enabled = true;
                         btnCrearViajeCliente.Enabled = true;
@@ -73,7 +74,7 @@ namespace Proyecto_Wei_Cliente
             }
             else
             {
-                MessageBox.Show("Debe ingresar su nombre antes de iniciar la conexión.");
+                MessageBox.Show("Debe ingresar su usuario y contraseña.");
             }
         }
 
@@ -90,6 +91,11 @@ namespace Proyecto_Wei_Cliente
         }
 
         private void fmVistaCliente_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCrearViajeCliente_Click(object sender, EventArgs e)
         {
 
         }

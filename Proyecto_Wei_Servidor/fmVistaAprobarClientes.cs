@@ -21,5 +21,10 @@ namespace Proyecto_Wei_Servidor
         {
             this.Close();
         }
+
+        private void dgtClientesSinAprobar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            dgtClientesSinAprobar.DataSource = datos.ClientesPendientes();
+        }
     }
 }

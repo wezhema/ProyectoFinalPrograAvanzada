@@ -28,21 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgtClientesSinAprobar = new System.Windows.Forms.DataGridView();
             this.btnAprobarCliente = new System.Windows.Forms.Button();
             this.btnDenegarCliente = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSalirAprobarClientes = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtClientesSinAprobar)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgtClientesSinAprobar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(13, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(775, 344);
-            this.dataGridView1.TabIndex = 0;
+            this.dgtClientesSinAprobar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtClientesSinAprobar.Location = new System.Drawing.Point(13, 47);
+            this.dgtClientesSinAprobar.Name = "dgtClientesSinAprobar";
+            this.dgtClientesSinAprobar.Size = new System.Drawing.Size(775, 344);
+            this.dgtClientesSinAprobar.TabIndex = 0;
+            this.dgtClientesSinAprobar.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgtClientesSinAprobar_CellContentClick);
             // 
             // btnAprobarCliente
             // 
@@ -90,10 +91,10 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDenegarCliente);
             this.Controls.Add(this.btnAprobarCliente);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgtClientesSinAprobar);
             this.Name = "fmVistaAprobarClientes";
             this.Text = "fmVistaAprobarClientes";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtClientesSinAprobar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -101,7 +102,7 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgtClientesSinAprobar;
         private System.Windows.Forms.Button btnAprobarCliente;
         private System.Windows.Forms.Button btnDenegarCliente;
         private System.Windows.Forms.Label label1;

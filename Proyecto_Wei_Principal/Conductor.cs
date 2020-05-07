@@ -17,6 +17,5 @@ namespace Proyecto_Wei_Principal
         public string Placa { get; set; }
         public string Marca { get; set; }
         public string Anio { get; set; }
-
     }
 }

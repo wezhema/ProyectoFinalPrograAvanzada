@@ -33,15 +33,15 @@
             this.btnLoginServidor = new System.Windows.Forms.Button();
             this.btnAprobarServidor = new System.Windows.Forms.Button();
             this.btnVerViajesServidor = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgtUsuariosConectados = new System.Windows.Forms.DataGridView();
             this.btnEnviarMsjServidor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtUsuarioAdmin = new System.Windows.Forms.TextBox();
+            this.txtPassAdmin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSalirServidor = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtUsuariosConectados)).BeginInit();
             this.SuspendLayout();
             // 
             // btnIniciarServidor
@@ -72,6 +72,7 @@
             this.btnLoginServidor.TabIndex = 2;
             this.btnLoginServidor.Text = "Iniciar Sesión";
             this.btnLoginServidor.UseVisualStyleBackColor = true;
+            this.btnLoginServidor.Click += new System.EventHandler(this.btnLoginServidor_Click);
             // 
             // btnAprobarServidor
             // 
@@ -81,6 +82,7 @@
             this.btnAprobarServidor.TabIndex = 3;
             this.btnAprobarServidor.Text = "Aprobar conductores";
             this.btnAprobarServidor.UseVisualStyleBackColor = true;
+            this.btnAprobarServidor.Click += new System.EventHandler(this.btnAprobarServidor_Click);
             // 
             // btnVerViajesServidor
             // 
@@ -91,13 +93,13 @@
             this.btnVerViajesServidor.Text = "Ver viajes en curso";
             this.btnVerViajesServidor.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dgtUsuariosConectados
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(371, 52);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(393, 215);
-            this.dataGridView1.TabIndex = 5;
+            this.dgtUsuariosConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgtUsuariosConectados.Location = new System.Drawing.Point(371, 52);
+            this.dgtUsuariosConectados.Name = "dgtUsuariosConectados";
+            this.dgtUsuariosConectados.Size = new System.Drawing.Size(393, 215);
+            this.dgtUsuariosConectados.TabIndex = 5;
             // 
             // btnEnviarMsjServidor
             // 
@@ -126,19 +128,19 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Contraseña:";
             // 
-            // textBox1
+            // txtUsuarioAdmin
             // 
-            this.textBox1.Location = new System.Drawing.Point(94, 52);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtUsuarioAdmin.Location = new System.Drawing.Point(94, 52);
+            this.txtUsuarioAdmin.Name = "txtUsuarioAdmin";
+            this.txtUsuarioAdmin.Size = new System.Drawing.Size(100, 20);
+            this.txtUsuarioAdmin.TabIndex = 9;
             // 
-            // textBox2
+            // txtPassAdmin
             // 
-            this.textBox2.Location = new System.Drawing.Point(94, 89);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 10;
+            this.txtPassAdmin.Location = new System.Drawing.Point(94, 89);
+            this.txtPassAdmin.Name = "txtPassAdmin";
+            this.txtPassAdmin.Size = new System.Drawing.Size(100, 20);
+            this.txtPassAdmin.TabIndex = 10;
             // 
             // label3
             // 
@@ -166,12 +168,12 @@
             this.ClientSize = new System.Drawing.Size(798, 353);
             this.Controls.Add(this.btnSalirServidor);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPassAdmin);
+            this.Controls.Add(this.txtUsuarioAdmin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnviarMsjServidor);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgtUsuariosConectados);
             this.Controls.Add(this.btnVerViajesServidor);
             this.Controls.Add(this.btnAprobarServidor);
             this.Controls.Add(this.btnLoginServidor);
@@ -180,7 +182,7 @@
             this.Name = "fmVistaServidor";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.fmVistaServidor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgtUsuariosConectados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,12 +195,12 @@
         private System.Windows.Forms.Button btnLoginServidor;
         private System.Windows.Forms.Button btnAprobarServidor;
         private System.Windows.Forms.Button btnVerViajesServidor;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgtUsuariosConectados;
         private System.Windows.Forms.Button btnEnviarMsjServidor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtUsuarioAdmin;
+        private System.Windows.Forms.TextBox txtPassAdmin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSalirServidor;
     }
