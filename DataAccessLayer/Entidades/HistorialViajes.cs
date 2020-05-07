@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Wei_Principal
+namespace DataAccessLayer.Entidades
 {
-    class Viajes
+	public class HistorialViajes
     {
         public string Id_Conductor { get; set; }
         public string Id_Viaje { get; set; }
@@ -14,6 +14,6 @@ namespace Proyecto_Wei_Principal
         public string PuntoDestino { get; set; }
         public string Desc_Viaje { get; set; }
         public string Can_Horas { get; set; }
-
+        public string Fecha { get; set; }
     }
 }

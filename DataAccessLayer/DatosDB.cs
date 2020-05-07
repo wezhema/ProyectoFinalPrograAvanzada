@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using DataAccessLayer.Entidades;
 
 namespace DataAccessLayer
 {
@@ -113,13 +114,7 @@ namespace DataAccessLayer
                 {
                     listaConductoresPendientes.Add(new Conductor
                     {
-                         = reader.GetString(0),
-                        Nombre = reader.GetString(1),
-                        PrimerApellido = reader.GetString(2),
-                        SegundoApellido = reader.GetString(3),
-                        Usuario = reader.GetString(4),
-                        Contrasenia = reader.GetString(5),
-                        Rol = reader.GetString(6),
+						//TODO
                     });
                 }
             }

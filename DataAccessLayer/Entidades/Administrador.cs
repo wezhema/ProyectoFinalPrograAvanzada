@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Wei_Principal
+namespace DataAccessLayer.Entidades
 {
-    class Administrador
+    public class Administrador
     {
         public string Id_Administrador { get; set; }      
         public string Usuario { get; set; }      

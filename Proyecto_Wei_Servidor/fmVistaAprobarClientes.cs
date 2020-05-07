@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace Proyecto_Wei_Servidor
 {
     public partial class fmVistaAprobarClientes : Form
     {
+		DatosDB datos = new DatosDB();
+
         public fmVistaAprobarClientes()
         {
             InitializeComponent();
@@ -24,7 +27,7 @@ namespace Proyecto_Wei_Servidor
 
         private void dgtClientesSinAprobar_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgtClientesSinAprobar.DataSource = datos.ClientesPendientes();
+            //dgtClientesSinAprobar.DataSource = datos.ClientesPendientes();
         }
     }
 }

@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Proyecto_Wei_Principal
+namespace DataAccessLayer.Entidades
 {
-    class Conductor
+	public class Conductor
     {
         public string Id_Conductor { get; set; }
         public string Nombre { get; set; }

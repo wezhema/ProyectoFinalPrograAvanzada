@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
-using System.Threading;
-using Proyecto_Wei_Principal;
+using System.Threading; 
 using System.Data.SqlClient;
+using DataAccessLayer;
 
 namespace Proyecto_Wei_Cliente
 {
