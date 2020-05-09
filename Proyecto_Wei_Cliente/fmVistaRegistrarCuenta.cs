@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccessLayer.Entidades;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +30,8 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-
+			Conductor conductor = new Conductor();
+			ClienteTCP.Registrar(conductor);
         }
     }
 }
