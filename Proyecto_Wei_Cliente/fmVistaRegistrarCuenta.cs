@@ -23,7 +23,8 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-			Conductor conductor = new Conductor()
+            //Parámetros recibidos del cliente para ser introducidos en la base de datos posterior a ser enviados al servidor
+            Conductor conductor = new Conductor()
 			{ 
 				Nombre = txtNombre.Text,	
 				Anio = txtAnio.Text,	
@@ -37,7 +38,7 @@ namespace Proyecto_Wei_Cliente
 			};
 			ClienteTCP.Registrar(conductor);
             this.Close();
-            MessageBox.Show("Registro con éxito.", "Atención");
+            MessageBox.Show("Registro con éxito.", "Atención");//Mensaje de éxito
         }
     }
 }

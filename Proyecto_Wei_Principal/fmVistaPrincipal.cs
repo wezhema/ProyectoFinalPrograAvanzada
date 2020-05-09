@@ -21,6 +21,7 @@ namespace Proyecto_Wei_Principal
 
         private void button2_Click(object sender, EventArgs e)
         {
+            //Llama a la vista del servidor y deshabilita su botón para que se ejecute 1 única vez
             fmVistaServidor vServidor = new fmVistaServidor();
             vServidor.Show();
             btnServidorPrincipal.Enabled = false;
@@ -28,11 +29,13 @@ namespace Proyecto_Wei_Principal
 
         private void btnSalirPrincipal_Click(object sender, EventArgs e)
         {
+            //Cierra la vista
             this.Close();
         }
 
         private void btnClientePrincipal_Click(object sender, EventArgs e)
         {
+            //Llama la vista cliente
             fmVistaCliente vCliente = new fmVistaCliente();
             vCliente.Show();
         }

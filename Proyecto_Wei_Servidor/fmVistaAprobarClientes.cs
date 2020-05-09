@@ -1,12 +1,5 @@
 ﻿using DataAccessLayer;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proyecto_Wei_Servidor
@@ -18,7 +11,7 @@ namespace Proyecto_Wei_Servidor
         public fmVistaAprobarClientes()
         {
             InitializeComponent();
-            dgtClientesSinAprobar.DataSource = datos.ObtenerConductores();
+            dgtClientesSinAprobar.DataSource = datos.ObtenerConductores();//Obtiene todos los conductores de la DB
         }
 
         private void btnSalirAprobarClientes_Click(object sender, EventArgs e)
@@ -33,6 +26,7 @@ namespace Proyecto_Wei_Servidor
 
         private void btnAprobarCliente_Click(object sender, EventArgs e)
         {
+            //Llama el método para aprobar conductores
             bool resultado = datos.AprobarConductores();
             if (resultado)
             {
@@ -48,6 +42,7 @@ namespace Proyecto_Wei_Servidor
 
         private void btnDenegarCliente_Click(object sender, EventArgs e)
         {
+            //Llama el método para denegar conductores
             bool resultado = datos.DenegarConductores();
             if (resultado)
             {
@@ -59,6 +54,11 @@ namespace Proyecto_Wei_Servidor
             }
 
             dgtClientesSinAprobar.DataSource = datos.ObtenerConductores();
+        }
+
+        private void fmVistaAprobarClientes_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

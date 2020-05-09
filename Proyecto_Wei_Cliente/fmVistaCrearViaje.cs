@@ -12,7 +12,7 @@ namespace Proyecto_Wei_Cliente
         {
             InitializeComponent();
             cmbIDConductor.DataSource = datos.ObtenerConductores();
-            cmbIDConductor.DisplayMember = "Id_Conductor";
+            cmbIDConductor.DisplayMember = "Id_Conductor";//Combo box que llama todos los ID de conductor de la BD
         }
 
         private void btnSalirViaje_Click(object sender, EventArgs e)
@@ -31,6 +31,7 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrarViaje_Click(object sender, EventArgs e)
         {
+            //Parámetros recibidos del cliente para ser introducidos en la base de datos posterior a ser enviados al servidor
             Viajes viaje = new Viajes()
             {
                 Id_Conductor = cmbIDConductor.Text,
@@ -42,7 +43,7 @@ namespace Proyecto_Wei_Cliente
             };
             ClienteTCP.CrearViaje(viaje);
             this.Close();
-            MessageBox.Show("Viaje registrado con éxito.", "Atención");
+            MessageBox.Show("Viaje registrado con éxito.", "Atención");//Mensaje de éxito
         }
     }
     

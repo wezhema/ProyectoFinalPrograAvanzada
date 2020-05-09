@@ -42,6 +42,7 @@
             this.cmbIDConductor = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtEstado = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
             label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -97,7 +98,7 @@
             // 
             // btnRegistrarViaje
             // 
-            this.btnRegistrarViaje.Location = new System.Drawing.Point(126, 182);
+            this.btnRegistrarViaje.Location = new System.Drawing.Point(176, 182);
             this.btnRegistrarViaje.Name = "btnRegistrarViaje";
             this.btnRegistrarViaje.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrarViaje.TabIndex = 8;
@@ -107,7 +108,7 @@
             // 
             // btnSalirViaje
             // 
-            this.btnSalirViaje.Location = new System.Drawing.Point(223, 182);
+            this.btnSalirViaje.Location = new System.Drawing.Point(273, 182);
             this.btnSalirViaje.Name = "btnSalirViaje";
             this.btnSalirViaje.Size = new System.Drawing.Size(75, 23);
             this.btnSalirViaje.TabIndex = 9;
@@ -165,11 +166,20 @@
             this.txtEstado.TabIndex = 16;
             this.txtEstado.Text = "EN CURSO";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Location = new System.Drawing.Point(12, 13);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(508, 163);
+            this.groupBox1.TabIndex = 17;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Ingrese los siguientes datos:";
+            // 
             // fmVistaCrearViaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(516, 233);
+            this.ClientSize = new System.Drawing.Size(532, 231);
             this.ControlBox = false;
             this.Controls.Add(this.txtEstado);
             this.Controls.Add(this.label2);
@@ -185,6 +195,7 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaCrearViaje";
             this.Text = "Crear Viaje";
@@ -209,5 +220,6 @@
         private System.Windows.Forms.ComboBox cmbIDConductor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtEstado;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }

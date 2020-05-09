@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAccessLayer.Entidades
+﻿namespace DataAccessLayer.Entidades
 {
+    //Clase conductor
 	public class Conductor
     {
+        //Getters y Setters con sus respectivas variables
         public int Id_Conductor { get; set; }
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }

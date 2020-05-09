@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DataAccessLayer.Entidades
+﻿namespace DataAccessLayer.Entidades
 {
+    //Clase para registrar el historial de viajes
 	public class HistorialViajes
     {
+        //Getters y Setters con sus respectivas variables
         public string Id_Conductor { get; set; }
         public string Id_Viaje { get; set; }
         public string PuntoPartida { get; set; }

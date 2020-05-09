@@ -49,7 +49,7 @@
             // 
             this.btnAprobarCliente.Location = new System.Drawing.Point(13, 410);
             this.btnAprobarCliente.Name = "btnAprobarCliente";
-            this.btnAprobarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnAprobarCliente.Size = new System.Drawing.Size(75, 39);
             this.btnAprobarCliente.TabIndex = 1;
             this.btnAprobarCliente.Text = "Aprobar";
             this.btnAprobarCliente.UseVisualStyleBackColor = true;
@@ -59,7 +59,7 @@
             // 
             this.btnDenegarCliente.Location = new System.Drawing.Point(105, 409);
             this.btnDenegarCliente.Name = "btnDenegarCliente";
-            this.btnDenegarCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnDenegarCliente.Size = new System.Drawing.Size(75, 40);
             this.btnDenegarCliente.TabIndex = 2;
             this.btnDenegarCliente.Text = "Denegar";
             this.btnDenegarCliente.UseVisualStyleBackColor = true;
@@ -76,7 +76,7 @@
             // 
             // btnSalirAprobarClientes
             // 
-            this.btnSalirAprobarClientes.Location = new System.Drawing.Point(713, 409);
+            this.btnSalirAprobarClientes.Location = new System.Drawing.Point(713, 418);
             this.btnSalirAprobarClientes.Name = "btnSalirAprobarClientes";
             this.btnSalirAprobarClientes.Size = new System.Drawing.Size(75, 23);
             this.btnSalirAprobarClientes.TabIndex = 4;
@@ -88,7 +88,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 466);
             this.ControlBox = false;
             this.Controls.Add(this.btnSalirAprobarClientes);
             this.Controls.Add(this.label1);
@@ -98,6 +98,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaAprobarClientes";
             this.Text = "Aprobar Conductores";
+            this.Load += new System.EventHandler(this.fmVistaAprobarClientes_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgtClientesSinAprobar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

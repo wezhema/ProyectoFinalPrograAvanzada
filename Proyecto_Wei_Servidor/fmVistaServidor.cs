@@ -84,7 +84,8 @@ namespace Proyecto_Wei_Servidor
             }
         }
 
-        private void ComunicacionCliente(object obj)//Proceso donde se lee lo que el cliente está enviando al servidor
+        //Proceso donde se lee lo que el cliente está enviando al servidor
+        private void ComunicacionCliente(object obj)
         {
             TcpClient tcpCliente = (TcpClient)obj;
             StreamReader reader = new StreamReader(tcpCliente.GetStream());
@@ -95,8 +96,8 @@ namespace Proyecto_Wei_Servidor
                 try
                 {
                     var mensajeTCP = reader.ReadLine();
-                    
-                    MensajeSocket<object> mensajeRecibido = JsonConvert.DeserializeObject<MensajeSocket<object>>(mensajeTCP);//Se deserializa el mensaje en objeto para pasarlos por parametros
+                    //Se deserializa el mensaje en objeto para pasarlos por parámetros
+                    MensajeSocket<object> mensajeRecibido = JsonConvert.DeserializeObject<MensajeSocket<object>>(mensajeTCP);
                     SeleccionarMetodo(mensajeRecibido.Mensaje, mensajeTCP, ref servidorStreamWriter);
                 }
                 catch (Exception)
@@ -109,11 +110,12 @@ namespace Proyecto_Wei_Servidor
 
         private void SeleccionarMetodo(string pMetodo, string pMensaje, ref StreamWriter servidorStreamWriter)
         {
+            //Switch para acceder a los métodos de la clase ClienteTCP
             switch (pMetodo)
             {
                 case "Conectar":
                     MensajeSocket<Conductor> mensajeConectar = JsonConvert.DeserializeObject<MensajeSocket<Conductor>>(pMensaje);
-                    VerificarConductor(mensajeConectar.Valor);//Se muestra el conductor en la variable Valor y muestra el mensaje
+                    VerificarConductor(mensajeConectar.Valor);
                     break;
 
                 case "Registrarse":
@@ -172,6 +174,7 @@ namespace Proyecto_Wei_Servidor
 
         private void btnLoginServidor_Click(object sender, EventArgs e)
         {
+            //Inicio de sesión del administrador
             if (!string.IsNullOrEmpty(txtUsuarioAdmin.Text))//Si el campo esta rellenado, continue, si no, arroja error
             {
                 if (datos.LoginAdministrador(txtUsuarioAdmin.Text, txtPassAdmin.Text))
