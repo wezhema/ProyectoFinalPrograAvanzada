@@ -13,32 +13,36 @@ namespace Proyecto_Wei_Servidor
 {
     public partial class fmVistaServidor : Form
     {
-        TcpListener tcpListener;
-        Thread subprocesoEscucharClientes;
+        TcpListener tcpListener;//Comando para escuchar clientes TCP
+        Thread subprocesoEscucharClientes;//Subproceso que se utilizará para escuchar clientes
         bool servidorIniciado;//Bool para retornar si el servidor está iniciado o no
-        ListBoxDelegado ListBoxClientes;
+        ListBoxDelegado ListBoxClientes;//Se utiliza una lista de delegados para mostrar los conductores conectados
 
-        DatosDB datos = new DatosDB();
+        DatosDB datos = new DatosDB();//Se instancia la DB
 
         public fmVistaServidor()
         {
+            //Al mostrar la vista del servidor se deshabilitan los siguientes botones:
             InitializeComponent();
-            btnIniciarServidor.ForeColor = Color.Green;
-            btnIniciarServidor.Enabled = false;
-            btnDetenerServidor.Enabled = false;//Botón de detener desabilitado cuando el de Iniciar esta habilitado
-            btnEnviarMsjServidor.Enabled = false;
-            btnVerViajesServidor.Enabled = false;
-            btnAprobarServidor.Enabled = false;
-            ListBoxClientes = new ListBoxDelegado(ModificarListBox);
+            btnIniciarServidor.Enabled = false;//Inicio del servidor
+            btnIniciarServidor.ForeColor = Color.Green;//El color se pone en verde para cuando esté disponible
+            btnDetenerServidor.Enabled = false;//Detener servidor
+            btnEnviarMsjServidor.Enabled = false;//Enviar mensaje
+            btnVerViajesServidor.Enabled = false;//Ver viajes
+            btnAprobarServidor.Enabled = false;//Aprobar conductores
+            ListBoxClientes = new ListBoxDelegado(ModificarListBox);//La lista de delegados se instancia
         }
 
-        private delegate void ListBoxDelegado(string texto, bool agregar);//Se crea mediante delegados el método que mostrará los conductores conectados
+        //Pasará los parámetros a la lista de delegados para mostrar los usuarios conectados
+        private delegate void ListBoxDelegado(string texto, bool agregar);
         private void ModificarListBox(string texto, bool agregar)
         {
+            //Si se conectan se agregan
             if (agregar)
             {
                 lstUsuariosConectados.Items.Add(texto);
             }
+            //Si se desconectan se remueven
             else
             {
                 lstUsuariosConectados.Items.Remove(texto);
@@ -48,6 +52,7 @@ namespace Proyecto_Wei_Servidor
 
         private void btnSalirServidor_Click(object sender, EventArgs e)
         {
+            //Botón de salir, cierra la vista
             this.Close();
         }
 
@@ -58,8 +63,8 @@ namespace Proyecto_Wei_Servidor
 
         private void btnIniciarServidor_Click(object sender, EventArgs e)
         {
-
-            IPAddress local = IPAddress.Parse("127.0.0.1");//Se  pone la IP local
+            //Inicio de servidor
+            IPAddress local = IPAddress.Parse("127.0.0.1");//Se pone la IP local
             tcpListener = new TcpListener(local, 16830);//Se declara el puerto
             subprocesoEscucharClientes = new Thread(new ThreadStart(EscucharClientes));//Se llama al subproceso
             subprocesoEscucharClientes.Start();//Se inicia el subproceso
@@ -68,7 +73,7 @@ namespace Proyecto_Wei_Servidor
             btnIniciarServidor.Enabled = false;//Se deshabilita el botón de iniciar
             btnDetenerServidor.ForeColor = Color.Red;
             btnDetenerServidor.Enabled = true;//Se habilita el botón de deshabilitar
-            lblServidor.Text = "Iniciado";
+            lblServidor.Text = "Iniciado";//Ca,mbia el label
 
         }
 
@@ -179,7 +184,6 @@ namespace Proyecto_Wei_Servidor
             {
                 if (datos.LoginAdministrador(txtUsuarioAdmin.Text, txtPassAdmin.Text))
                 {
-
                     MessageBox.Show("Inicio de sesión con éxito.", "Administrador conectado", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btnLoginServidor.Enabled = false;
                     txtUsuarioAdmin.ReadOnly = true;
@@ -205,7 +209,6 @@ namespace Proyecto_Wei_Servidor
 
         private void btnEnviarMsjServidor_Click(object sender, EventArgs e)
         {
-
         }
 
         private void dgtUsuariosConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -221,7 +224,6 @@ namespace Proyecto_Wei_Servidor
 
         private void txtUsuarioAdmin_TextChanged(object sender, EventArgs e)
         {
-
         }
     }
 }
