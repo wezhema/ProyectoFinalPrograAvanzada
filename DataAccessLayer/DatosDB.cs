@@ -278,7 +278,7 @@ namespace DataAccessLayer
             string sentenciaSQL;//Variable que almacenara la sentencia
             SqlDataReader reader;//Ejecuta sentencias SQL
 
-            sentenciaSQL = @"SELECT* FROM Viajes WHERE Estado = 'EN CURSO'";
+            sentenciaSQL = @"SELECT* FROM Viajes WHERE Estado = 'EN CURSO'";//falta poner la condicion para que llame solo los viajes de ese usuario
 
             comando.CommandType = CommandType.Text;
             comando.CommandText = sentenciaSQL;
