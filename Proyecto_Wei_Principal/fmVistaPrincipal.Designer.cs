@@ -67,12 +67,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(203, 216);
+            this.ClientSize = new System.Drawing.Size(221, 233);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSalirPrincipal);
             this.Controls.Add(this.btnServidorPrincipal);
             this.Controls.Add(this.btnClientePrincipal);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaPrincipal";
-            this.Text = "fmVistaPrincipal";
+            this.Text = "Menú Principal";
             this.Load += new System.EventHandler(this.fmVistaPrincipal_Load);
             this.ResumeLayout(false);
 

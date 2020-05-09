@@ -69,8 +69,9 @@
             this.Controls.Add(this.btnSalirViajesEnCurso);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaViajesEnCurso";
-            this.Text = "fmVistaViajesEnCurso";
+            this.Text = "Viajes en curso";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

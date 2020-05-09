@@ -15,5 +15,6 @@ namespace DataAccessLayer.Entidades
         public string Desc_Viaje { get; set; }
         public string Can_Horas { get; set; }
         public string Fecha { get; set; }
+        public string Estado { get; set; }
     }
 }

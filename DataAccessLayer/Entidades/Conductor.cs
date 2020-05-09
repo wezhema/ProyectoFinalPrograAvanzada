@@ -12,6 +12,7 @@ namespace DataAccessLayer.Entidades
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }
+        public string Estado { get; set; }
         public string NombreUsuario { get; set; }
         public string Contrasenia { get; set; }
         public string Placa { get; set; }

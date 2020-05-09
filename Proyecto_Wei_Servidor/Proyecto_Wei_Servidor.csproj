@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\Proyecto_Wei_Principal\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Configuration.ConfigurationManager, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -124,6 +127,10 @@
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{c341d61d-8ca6-477f-bb78-e5f60aa3bfb2}</Project>
       <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Proyecto_Wei_Cliente\Proyecto_Wei_Cliente.csproj">
+      <Project>{38e4ab82-b93e-4888-b198-2141b8ca232f}</Project>
+      <Name>Proyecto_Wei_Cliente</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

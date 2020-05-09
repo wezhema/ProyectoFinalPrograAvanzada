@@ -80,6 +80,12 @@
     <Compile Include="fmVistaCrearViaje.Designer.cs">
       <DependentUpon>fmVistaCrearViaje.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmVistaRegistrarCuenta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmVistaRegistrarCuenta.Designer.cs">
+      <DependentUpon>fmVistaRegistrarCuenta.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmVistaVerViajes.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmVistaCrearViaje.resx">
       <DependentUpon>fmVistaCrearViaje.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmVistaRegistrarCuenta.resx">
+      <DependentUpon>fmVistaRegistrarCuenta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmVistaVerViajes.resx">
       <DependentUpon>fmVistaVerViajes.cs</DependentUpon>

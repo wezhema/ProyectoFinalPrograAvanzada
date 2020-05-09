@@ -33,7 +33,6 @@
             this.btnLoginServidor = new System.Windows.Forms.Button();
             this.btnAprobarServidor = new System.Windows.Forms.Button();
             this.btnVerViajesServidor = new System.Windows.Forms.Button();
-            this.dgtUsuariosConectados = new System.Windows.Forms.DataGridView();
             this.btnEnviarMsjServidor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,12 +40,14 @@
             this.txtPassAdmin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSalirServidor = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgtUsuariosConectados)).BeginInit();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lblServidor = new System.Windows.Forms.Label();
+            this.lstUsuariosConectados = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // btnIniciarServidor
             // 
-            this.btnIniciarServidor.Location = new System.Drawing.Point(31, 217);
+            this.btnIniciarServidor.Location = new System.Drawing.Point(27, 244);
             this.btnIniciarServidor.Name = "btnIniciarServidor";
             this.btnIniciarServidor.Size = new System.Drawing.Size(75, 23);
             this.btnIniciarServidor.TabIndex = 0;
@@ -56,7 +57,7 @@
             // 
             // btnDetenerServidor
             // 
-            this.btnDetenerServidor.Location = new System.Drawing.Point(131, 217);
+            this.btnDetenerServidor.Location = new System.Drawing.Point(124, 244);
             this.btnDetenerServidor.Name = "btnDetenerServidor";
             this.btnDetenerServidor.Size = new System.Drawing.Size(75, 23);
             this.btnDetenerServidor.TabIndex = 1;
@@ -66,9 +67,9 @@
             // 
             // btnLoginServidor
             // 
-            this.btnLoginServidor.Location = new System.Drawing.Point(80, 128);
+            this.btnLoginServidor.Location = new System.Drawing.Point(69, 128);
             this.btnLoginServidor.Name = "btnLoginServidor";
-            this.btnLoginServidor.Size = new System.Drawing.Size(89, 37);
+            this.btnLoginServidor.Size = new System.Drawing.Size(100, 37);
             this.btnLoginServidor.TabIndex = 2;
             this.btnLoginServidor.Text = "Iniciar Sesión";
             this.btnLoginServidor.UseVisualStyleBackColor = true;
@@ -92,14 +93,7 @@
             this.btnVerViajesServidor.TabIndex = 4;
             this.btnVerViajesServidor.Text = "Ver viajes en curso";
             this.btnVerViajesServidor.UseVisualStyleBackColor = true;
-            // 
-            // dgtUsuariosConectados
-            // 
-            this.dgtUsuariosConectados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgtUsuariosConectados.Location = new System.Drawing.Point(371, 52);
-            this.dgtUsuariosConectados.Name = "dgtUsuariosConectados";
-            this.dgtUsuariosConectados.Size = new System.Drawing.Size(393, 215);
-            this.dgtUsuariosConectados.TabIndex = 5;
+            this.btnVerViajesServidor.Click += new System.EventHandler(this.btnVerViajesServidor_Click);
             // 
             // btnEnviarMsjServidor
             // 
@@ -109,11 +103,12 @@
             this.btnEnviarMsjServidor.TabIndex = 6;
             this.btnEnviarMsjServidor.Text = "Enviar mensaje";
             this.btnEnviarMsjServidor.UseVisualStyleBackColor = true;
+            this.btnEnviarMsjServidor.Click += new System.EventHandler(this.btnEnviarMsjServidor_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 52);
+            this.label1.Location = new System.Drawing.Point(66, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 7;
@@ -122,7 +117,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 89);
+            this.label2.Location = new System.Drawing.Point(66, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 8;
@@ -130,14 +125,14 @@
             // 
             // txtUsuarioAdmin
             // 
-            this.txtUsuarioAdmin.Location = new System.Drawing.Point(94, 52);
+            this.txtUsuarioAdmin.Location = new System.Drawing.Point(69, 49);
             this.txtUsuarioAdmin.Name = "txtUsuarioAdmin";
             this.txtUsuarioAdmin.Size = new System.Drawing.Size(100, 20);
             this.txtUsuarioAdmin.TabIndex = 9;
             // 
             // txtPassAdmin
             // 
-            this.txtPassAdmin.Location = new System.Drawing.Point(94, 89);
+            this.txtPassAdmin.Location = new System.Drawing.Point(69, 88);
             this.txtPassAdmin.Name = "txtPassAdmin";
             this.txtPassAdmin.Size = new System.Drawing.Size(100, 20);
             this.txtPassAdmin.TabIndex = 10;
@@ -161,11 +156,41 @@
             this.btnSalirServidor.UseVisualStyleBackColor = true;
             this.btnSalirServidor.Click += new System.EventHandler(this.btnSalirServidor_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(53, 215);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(49, 13);
+            this.label4.TabIndex = 13;
+            this.label4.Text = "Servidor:";
+            // 
+            // lblServidor
+            // 
+            this.lblServidor.AutoSize = true;
+            this.lblServidor.Location = new System.Drawing.Point(121, 215);
+            this.lblServidor.Name = "lblServidor";
+            this.lblServidor.Size = new System.Drawing.Size(50, 13);
+            this.lblServidor.TabIndex = 14;
+            this.lblServidor.Text = "Detenido";
+            // 
+            // lstUsuariosConectados
+            // 
+            this.lstUsuariosConectados.FormattingEnabled = true;
+            this.lstUsuariosConectados.Location = new System.Drawing.Point(374, 49);
+            this.lstUsuariosConectados.Name = "lstUsuariosConectados";
+            this.lstUsuariosConectados.Size = new System.Drawing.Size(390, 212);
+            this.lstUsuariosConectados.TabIndex = 15;
+            // 
             // fmVistaServidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(798, 353);
+            this.ControlBox = false;
+            this.Controls.Add(this.lstUsuariosConectados);
+            this.Controls.Add(this.lblServidor);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSalirServidor);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPassAdmin);
@@ -173,16 +198,15 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnEnviarMsjServidor);
-            this.Controls.Add(this.dgtUsuariosConectados);
             this.Controls.Add(this.btnVerViajesServidor);
             this.Controls.Add(this.btnAprobarServidor);
             this.Controls.Add(this.btnLoginServidor);
             this.Controls.Add(this.btnDetenerServidor);
             this.Controls.Add(this.btnIniciarServidor);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaServidor";
-            this.Text = "Form1";
+            this.Text = "Servidor";
             this.Load += new System.EventHandler(this.fmVistaServidor_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgtUsuariosConectados)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,7 +219,6 @@
         private System.Windows.Forms.Button btnLoginServidor;
         private System.Windows.Forms.Button btnAprobarServidor;
         private System.Windows.Forms.Button btnVerViajesServidor;
-        private System.Windows.Forms.DataGridView dgtUsuariosConectados;
         private System.Windows.Forms.Button btnEnviarMsjServidor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -203,6 +226,9 @@
         private System.Windows.Forms.TextBox txtPassAdmin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSalirServidor;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblServidor;
+        private System.Windows.Forms.ListBox lstUsuariosConectados;
     }
 }
 

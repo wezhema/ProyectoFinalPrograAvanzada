@@ -53,6 +53,7 @@
             this.btnAprobarCliente.TabIndex = 1;
             this.btnAprobarCliente.Text = "Aprobar";
             this.btnAprobarCliente.UseVisualStyleBackColor = true;
+            this.btnAprobarCliente.Click += new System.EventHandler(this.btnAprobarCliente_Click);
             // 
             // btnDenegarCliente
             // 
@@ -62,6 +63,7 @@
             this.btnDenegarCliente.TabIndex = 2;
             this.btnDenegarCliente.Text = "Denegar";
             this.btnDenegarCliente.UseVisualStyleBackColor = true;
+            this.btnDenegarCliente.Click += new System.EventHandler(this.btnDenegarCliente_Click);
             // 
             // label1
             // 
@@ -87,13 +89,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ControlBox = false;
             this.Controls.Add(this.btnSalirAprobarClientes);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnDenegarCliente);
             this.Controls.Add(this.btnAprobarCliente);
             this.Controls.Add(this.dgtClientesSinAprobar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaAprobarClientes";
-            this.Text = "fmVistaAprobarClientes";
+            this.Text = "Aprobar Conductores";
             ((System.ComponentModel.ISupportInitialize)(this.dgtClientesSinAprobar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

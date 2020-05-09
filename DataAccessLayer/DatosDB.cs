@@ -98,7 +98,7 @@ namespace DataAccessLayer
             string sentenciaSQL;//Variable que almacenara la sentencia
             SqlDataReader reader;//Ejecuta sentencias SQL
 
-            sentenciaSQL = @"select* from Alumno where Dsc_rol = 'PENDIENTE'";
+            sentenciaSQL = @"select* from Conductor where Estado = 'PENDIENTE'";
 
             comando.CommandType = CommandType.Text;
             comando.CommandText = sentenciaSQL;
@@ -114,13 +114,119 @@ namespace DataAccessLayer
                 {
                     listaConductoresPendientes.Add(new Conductor
                     {
-						//TODO
+						Id_Conductor = reader.GetString(0),
+                        Nombre = reader.GetString(1),
+                        Apellido1 = reader.GetString(2),
+                        Apellido2 = reader.GetString(3),
+                        Estado = reader.GetString(4),
+                        NombreUsuario = reader.GetString(5),
+                        Contrasenia = reader.GetString(6),
+                        Placa = reader.GetString(7),
+                        Marca = reader.GetString(8),
+                        Anio = reader.GetString(9),
                     });
                 }
             }
 
             conexion.Close();
             return listaConductoresPendientes;
+        }
+
+        public bool AprobarConductores()
+        {
+
+            try
+            {
+                SqlConnection conexion = new SqlConnection(cadena);
+                SqlCommand comando = new SqlCommand();
+                string sentenciaSQL;//Variable que almacenara la sentencia
+
+                sentenciaSQL = @"update Conductor set Estado = 'APROBADO' where Estado = 'PENDIENTE'";
+
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = sentenciaSQL;
+                comando.Connection = conexion;
+
+                conexion.Open();
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (System.Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+        public bool DenegarConductores()
+        {
+
+            try
+            {
+                SqlConnection conexion = new SqlConnection(cadena);
+                SqlCommand comando = new SqlCommand();
+                string sentenciaSQL;//Variable que almacenara la sentencia
+
+                sentenciaSQL = @"update Conductor set Estado = 'DENEGADO' where Estado = 'PENDIENTE'";
+
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = sentenciaSQL;
+                comando.Connection = conexion;
+
+                conexion.Open();
+
+                comando.ExecuteNonQuery();
+
+                conexion.Close();
+            }
+            catch (System.Exception)
+            {
+
+                return false;
+            }
+            return true;
+        }
+
+        public List<Viajes> ConsultarViajesActivos()//Lee tabla de Conductores
+        {
+            List<Viajes> listaViajesActivos = new List<Viajes>();
+
+            SqlConnection conexion = new SqlConnection(cadena);
+            SqlCommand comando = new SqlCommand();
+            string sentenciaSQL;//Variable que almacenara la sentencia
+            SqlDataReader reader;//Ejecuta sentencias SQL
+
+            sentenciaSQL = @"select* from Viajes where Estado = 'En Curso'";
+
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = sentenciaSQL;
+            comando.Connection = conexion;
+
+            conexion.Open();
+
+            reader = comando.ExecuteReader();
+
+            if (reader.HasRows)//Si hay datos los agrega a la lista para luego desplegarlas en la GUI
+            {
+                while (reader.Read())
+                {
+                    listaViajesActivos.Add(new Viajes
+                    {
+                        Id_Conductor = reader.GetString(0),
+                        Id_Viaje = reader.GetString(1),
+                        PuntoPartida = reader.GetString(2),
+                        PuntoDestino = reader.GetString(3),
+                        Desc_Viaje = reader.GetString(4),
+                        Can_Horas = reader.GetString(5),
+                        Estado = reader.GetString(6),
+                    });
+                }
+            }
+
+            conexion.Close();
+            return listaViajesActivos;
         }
     }
 

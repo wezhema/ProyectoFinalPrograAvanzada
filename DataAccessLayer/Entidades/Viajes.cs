@@ -14,6 +14,7 @@ namespace DataAccessLayer.Entidades
         public string PuntoDestino { get; set; }
         public string Desc_Viaje { get; set; }
         public string Can_Horas { get; set; }
+        public string Estado { get; set; }
 
     }
 }

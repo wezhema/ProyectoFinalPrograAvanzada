@@ -50,6 +50,7 @@
             this.btnRegistrarCliente.TabIndex = 0;
             this.btnRegistrarCliente.Text = "Registrarse";
             this.btnRegistrarCliente.UseVisualStyleBackColor = true;
+            this.btnRegistrarCliente.Click += new System.EventHandler(this.btnRegistrarCliente_Click);
             // 
             // btnLoginCliente
             // 
@@ -155,6 +156,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(518, 227);
+            this.ControlBox = false;
             this.Controls.Add(this.btnDesconectar);
             this.Controls.Add(this.btnVerViajes);
             this.Controls.Add(this.lblEstadoCliente);
@@ -167,8 +169,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLoginCliente);
             this.Controls.Add(this.btnRegistrarCliente);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaCliente";
-            this.Text = "Form1";
+            this.Text = "Cliente";
             this.Load += new System.EventHandler(this.fmVistaCliente_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
