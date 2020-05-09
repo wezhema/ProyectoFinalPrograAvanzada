@@ -189,46 +189,60 @@ namespace DataAccessLayer
             return true;
         }
 
-        public List<Viajes> ConsultarViajesActivos()//Lee tabla de Conductores
+        public bool RegistrarConductor(Conductor conductor)//Lee tabla de Conductores
         {
-            List<Viajes> listaViajesActivos = new List<Viajes>();
+			try
+			{
+				SqlConnection conexion = new SqlConnection(cadena);
+				SqlCommand comando = new SqlCommand();
+				string sentenciaSQL;//Variable que almacenara la sentencia 
 
-            SqlConnection conexion = new SqlConnection(cadena);
-            SqlCommand comando = new SqlCommand();
-            string sentenciaSQL;//Variable que almacenara la sentencia
-            SqlDataReader reader;//Ejecuta sentencias SQL
+				sentenciaSQL = @"INSERT INTO [dbo].[Conductor]
+						([Nombre]
+						,[Apellido1]
+						,[Apellido2]
+						,[Estado]
+						,[NombreUsuario]
+						,[Contrasenia]
+						,[Placa]
+						,[Marca]
+						,[Anio])
+					VALUES
+						(@Nombre 
+						,@Apellido1 
+						,@Apellido2 
+						,@Estado 
+						,@NombreUsuario 
+						,@Contrasenia 
+						,@Placa 
+						,@Marca 
+						,@Anio)";
 
-            sentenciaSQL = @"select* from Viajes where Estado = 'En Curso'";
+				comando.CommandType = CommandType.Text;
+				comando.CommandText = sentenciaSQL;
+				comando.Parameters.AddWithValue("@Nombre", conductor.Nombre);
+				comando.Parameters.AddWithValue("@Apellido1", conductor.Apellido1);
+				comando.Parameters.AddWithValue("@Apellido2", conductor.Apellido2);
+				comando.Parameters.AddWithValue("@Estado", conductor.Estado);
+				comando.Parameters.AddWithValue("@NombreUsuario", conductor.NombreUsuario);
+				comando.Parameters.AddWithValue("@Contrasenia", conductor.Contrasenia);
+				comando.Parameters.AddWithValue("@Placa", conductor.Placa);
+				comando.Parameters.AddWithValue("@Marca", conductor.Marca);
+				comando.Parameters.AddWithValue("@Anio", conductor.Anio);
+				comando.Connection = conexion;
 
-            comando.CommandType = CommandType.Text;
-            comando.CommandText = sentenciaSQL;
-            comando.Connection = conexion;
+				conexion.Open();
 
-            conexion.Open();
+				comando.ExecuteNonQuery();
 
-            reader = comando.ExecuteReader();
+				conexion.Close();
 
-            if (reader.HasRows)//Si hay datos los agrega a la lista para luego desplegarlas en la GUI
-            {
-                while (reader.Read())
-                {
-                    listaViajesActivos.Add(new Viajes
-                    {
-                        Id_Conductor = reader.GetString(0),
-                        Id_Viaje = reader.GetString(1),
-                        PuntoPartida = reader.GetString(2),
-                        PuntoDestino = reader.GetString(3),
-                        Desc_Viaje = reader.GetString(4),
-                        Can_Horas = reader.GetString(5),
-                        Estado = reader.GetString(6),
-                    });
-                }
-            }
-
-            conexion.Close();
-            return listaViajesActivos;
-        }
-    }
-
-
-}
+				return true;
+			}
+			catch (System.Exception ex)
+			{
+				return false;
+			}
+        } 
+	} 
+} 

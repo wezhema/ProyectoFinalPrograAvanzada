@@ -30,7 +30,20 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-			Conductor conductor = new Conductor();
+			///TODO
+			///Crear conductiono con los Textboxes
+			Conductor conductor = new Conductor()
+			{ 
+				Nombre = "",	
+				Anio = "",	
+				Apellido1 = "",	
+				Apellido2 = "",	
+				Contrasenia = "",	
+				Estado = "",	
+				Marca = "",	
+				NombreUsuario = "",	
+				Placa = ""
+			};
 			ClienteTCP.Registrar(conductor);
         }
     }
