@@ -38,7 +38,6 @@ namespace DataAccessLayer.Entidades
             {
                 throw;
             }
-            
         }
 
         public static void Desconectar(Conductor conductor)
@@ -46,7 +45,7 @@ namespace DataAccessLayer.Entidades
             MensajeSocket<Conductor> mensajeDesconectar = new MensajeSocket<Conductor> { Mensaje = "Desconectar", Valor = conductor };
             clienteStreamWriter.WriteLine(JsonConvert.SerializeObject(mensajeDesconectar));
             clienteStreamWriter.Flush();
-
+            
             clienteTCP.Close();
         }
 
@@ -71,6 +70,29 @@ namespace DataAccessLayer.Entidades
 				throw;
 			}
 		}
+
+        //falta
+        public static void CrearViaje (Viajes viajes)
+        {
+            try
+            {
+                ipServidor = IPAddress.Parse("127.0.0.1");
+                clienteTCP = new TcpClient();
+                serverEndPoint = new IPEndPoint(ipServidor, 16830);
+                clienteTCP.Connect(serverEndPoint);
+
+                MensajeSocket<Viajes> mensajeCrearViaje = new MensajeSocket<Viajes> { Mensaje = "CrearViaje", Valor = viajes };
+
+                clienteStreamReader = new StreamReader(clienteTCP.GetStream());
+                clienteStreamWriter = new StreamWriter(clienteTCP.GetStream());
+                clienteStreamWriter.WriteLine(JsonConvert.SerializeObject(mensajeCrearViaje));
+                clienteStreamWriter.Flush();
+            }
+            catch (SocketException ex)
+            {
+                throw;
+            }
+        }
 
     }
 

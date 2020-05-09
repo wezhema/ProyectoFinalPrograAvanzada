@@ -43,7 +43,6 @@ namespace Proyecto_Wei_Servidor
             {
                 lstUsuariosConectados.Items.Remove(texto);
             }
-            
         }
         
 
@@ -123,6 +122,8 @@ namespace Proyecto_Wei_Servidor
                     break;
 
                 case "CrearViaje":
+                    MensajeSocket<Viajes> mensajeCrearViaje = JsonConvert.DeserializeObject<MensajeSocket<Viajes>>(pMensaje);
+                    CrearViaje(mensajeCrearViaje.Valor, ref servidorStreamWriter);
                     break;
 
                 case "VerViaje":
@@ -138,21 +139,26 @@ namespace Proyecto_Wei_Servidor
             }
         }
 
-        private void DesconectarConductor(Conductor empleado)
-        {
-            lstUsuariosConectados.Invoke(ListBoxClientes, new object[] { empleado.NombreUsuario, false });//False para eliminarlo de la lista
-        }
-
-        private void RegistrarConductor(Conductor valoresRegistrar, ref StreamWriter servidorStreamWriter)
-        {
-			datos.RegistrarConductor(valoresRegistrar);
-        }
-
-
+        //Métodos que son llamados por el Switch
         private void VerificarConductor(Conductor empleado)
         {
             datos.LoginCliente(txtUsuarioAdmin.Text, txtPassAdmin.Text);
             lstUsuariosConectados.Invoke(ListBoxClientes, new object[] { empleado.NombreUsuario, true });//True para agregarlo a la lista
+        }
+
+        private void RegistrarConductor(Conductor valoresRegistrar, ref StreamWriter servidorStreamWriter)
+        {
+            datos.RegistrarConductor(valoresRegistrar);
+        }
+
+        private void CrearViaje(Viajes valoresRegistrar, ref StreamWriter servidorStreamWriter)
+        {
+            datos.CrearViaje(valoresRegistrar);
+        }
+
+        private void DesconectarConductor(Conductor empleado)
+        {
+            lstUsuariosConectados.Invoke(ListBoxClientes, new object[] { empleado.NombreUsuario, false });//False para eliminarlo de la lista
         }
 
         private void btnDetenerServidor_Click(object sender, EventArgs e)
@@ -180,7 +186,6 @@ namespace Proyecto_Wei_Servidor
                     btnAprobarServidor.Enabled = true;
                     lstUsuariosConectados.Enabled = true;
                     btnIniciarServidor.Enabled = true;
-
                 }
                 else
                 {
@@ -209,6 +214,11 @@ namespace Proyecto_Wei_Servidor
         {
             fmVistaViajesEnCurso vVistaViajesEnCurso = new fmVistaViajesEnCurso();
             vVistaViajesEnCurso.Show();
+        }
+
+        private void txtUsuarioAdmin_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Proyecto_Wei_Principal
         {
             fmVistaServidor vServidor = new fmVistaServidor();
             vServidor.Show();
+            btnServidorPrincipal.Enabled = false;
         }
 
         private void btnSalirPrincipal_Click(object sender, EventArgs e)

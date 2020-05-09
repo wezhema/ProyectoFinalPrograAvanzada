@@ -1,12 +1,5 @@
 ﻿using DataAccessLayer.Entidades;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proyecto_Wei_Cliente
@@ -30,21 +23,21 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
-			///TODO
-			///Crear conductiono con los Textboxes
 			Conductor conductor = new Conductor()
 			{ 
-				Nombre = "",	
-				Anio = "",	
-				Apellido1 = "",	
-				Apellido2 = "",	
-				Contrasenia = "",	
-				Estado = "",	
-				Marca = "",	
-				NombreUsuario = "",	
-				Placa = ""
+				Nombre = txtNombre.Text,	
+				Anio = txtAnio.Text,	
+				Apellido1 = txt1Apellido.Text,	
+				Apellido2 = txt2Apellido.Text,	
+				Contrasenia = txtPass.Text,	
+				Estado = txtEstado.Text,	
+				Marca = txtMarca.Text,	
+				NombreUsuario = txtUsuario.Text,	
+				Placa = txtPlaca.Text
 			};
 			ClienteTCP.Registrar(conductor);
+            this.Close();
+            MessageBox.Show("Registro con éxito.", "Atención");
         }
     }
 }

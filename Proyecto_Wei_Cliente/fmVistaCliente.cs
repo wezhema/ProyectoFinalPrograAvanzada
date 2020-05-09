@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.Net.Sockets;
@@ -30,8 +23,8 @@ namespace Proyecto_Wei_Cliente
             btnLoginCliente.Enabled = true;
             btnDesconectar.Enabled = false;
             btnCrearViajeCliente.Enabled = false;
-            btnVerViajes.Enabled = false;
             btnRegistrarCliente.Enabled = true;
+            dgvViajeActivo.DataSource = datos.ObtenerViajes();
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -61,18 +54,17 @@ namespace Proyecto_Wei_Cliente
                         txtUsuarioCliente.ReadOnly = true;
                         txtContraseniaCliente.ReadOnly = true;
                         btnRegistrarCliente.Enabled = false;
+                        btnSalirCliente.Enabled = false;
                     }
                     else
                     {
                         MessageBox.Show("Verifique la conexión al servidor.", "Error");
                     }
-
                 }
                 else
                 {
                     MessageBox.Show("Fallo al iniciar sesión, datos incorrectos.", "Error");
                 }
-
             }
             else
             {
@@ -92,6 +84,8 @@ namespace Proyecto_Wei_Cliente
             txtUsuarioCliente.ReadOnly = false;
             txtContraseniaCliente.ReadOnly = false;
             clienteConectado = false;
+            btnRegistrarCliente.Enabled = true;
+            btnSalirCliente.Enabled = true;
         }
 
         private void fmVistaCliente_Load(object sender, EventArgs e)
@@ -101,13 +95,24 @@ namespace Proyecto_Wei_Cliente
 
         private void btnCrearViajeCliente_Click(object sender, EventArgs e)
         {
-
+            fmVistaCrearViaje vCrearViaje = new fmVistaCrearViaje();
+            vCrearViaje.Show();
         }
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
             fmVistaRegistrarCuenta vRegistrarCuenta = new fmVistaRegistrarCuenta();
             vRegistrarCuenta.Show();
+        }
+
+        private void dgvViajeActivo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

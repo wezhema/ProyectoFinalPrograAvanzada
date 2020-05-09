@@ -18,6 +18,7 @@ namespace Proyecto_Wei_Servidor
         public fmVistaAprobarClientes()
         {
             InitializeComponent();
+            dgtClientesSinAprobar.DataSource = datos.ObtenerConductores();
         }
 
         private void btnSalirAprobarClientes_Click(object sender, EventArgs e)
@@ -27,7 +28,7 @@ namespace Proyecto_Wei_Servidor
 
         private void dgtClientesSinAprobar_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dgtClientesSinAprobar.DataSource = datos.ConductoresPendientes();
+            
         }
 
         private void btnAprobarCliente_Click(object sender, EventArgs e)
@@ -39,10 +40,10 @@ namespace Proyecto_Wei_Servidor
             }
             else
             {
-                MessageBox.Show("Hubo un error, intente de nuevo.", "Error");
+                MessageBox.Show("Error, no hay conductores por aprobar.", "Error");
             }
 
-            dgtClientesSinAprobar.DataSource = datos.ConductoresPendientes();
+            dgtClientesSinAprobar.DataSource = datos.ObtenerConductores();
         }
 
         private void btnDenegarCliente_Click(object sender, EventArgs e)
@@ -54,10 +55,10 @@ namespace Proyecto_Wei_Servidor
             }
             else
             {
-                MessageBox.Show("Hubo un error, intente de nuevo.", "Error");
+                MessageBox.Show("Error, no hay conductores por denegar.", "Error");
             }
 
-            dgtClientesSinAprobar.DataSource = datos.ConductoresPendientes();
+            dgtClientesSinAprobar.DataSource = datos.ObtenerConductores();
         }
     }
 }

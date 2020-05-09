@@ -8,7 +8,7 @@ namespace DataAccessLayer.Entidades
 {
 	public class Conductor
     {
-        public string Id_Conductor { get; set; }
+        public int Id_Conductor { get; set; }
         public string Nombre { get; set; }
         public string Apellido1 { get; set; }
         public string Apellido2 { get; set; }

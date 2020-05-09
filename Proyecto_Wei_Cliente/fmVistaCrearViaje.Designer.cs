@@ -30,11 +30,8 @@
         {
             System.Windows.Forms.Label label5;
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtIDConductor = new System.Windows.Forms.TextBox();
-            this.txtIDViaje = new System.Windows.Forms.TextBox();
             this.txtPtoPartida = new System.Windows.Forms.TextBox();
             this.txtPtoDestino = new System.Windows.Forms.TextBox();
             this.btnRegistrarViaje = new System.Windows.Forms.Button();
@@ -42,13 +39,16 @@
             this.txtDescCliente = new System.Windows.Forms.TextBox();
             this.txtTiempoCliente = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
+            this.cmbIDConductor = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtEstado = new System.Windows.Forms.TextBox();
             label5 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(345, 77);
+            label5.Location = new System.Drawing.Point(320, 105);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(184, 13);
             label5.TabIndex = 12;
@@ -57,25 +57,16 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 39);
+            this.label1.Location = new System.Drawing.Point(51, 38);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(73, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "ID Conductor:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(162, 39);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "ID Viaje:";
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(39, 100);
+            this.label3.Location = new System.Drawing.Point(185, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 2;
@@ -84,52 +75,39 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(162, 100);
+            this.label4.Location = new System.Drawing.Point(185, 105);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(90, 13);
             this.label4.TabIndex = 3;
             this.label4.Text = "Punto de destino:";
             // 
-            // txtIDConductor
-            // 
-            this.txtIDConductor.Location = new System.Drawing.Point(42, 55);
-            this.txtIDConductor.Name = "txtIDConductor";
-            this.txtIDConductor.Size = new System.Drawing.Size(100, 20);
-            this.txtIDConductor.TabIndex = 4;
-            // 
-            // txtIDViaje
-            // 
-            this.txtIDViaje.Location = new System.Drawing.Point(165, 55);
-            this.txtIDViaje.Name = "txtIDViaje";
-            this.txtIDViaje.Size = new System.Drawing.Size(100, 20);
-            this.txtIDViaje.TabIndex = 5;
-            // 
             // txtPtoPartida
             // 
-            this.txtPtoPartida.Location = new System.Drawing.Point(42, 117);
+            this.txtPtoPartida.Location = new System.Drawing.Point(188, 55);
             this.txtPtoPartida.Name = "txtPtoPartida";
             this.txtPtoPartida.Size = new System.Drawing.Size(100, 20);
             this.txtPtoPartida.TabIndex = 6;
             // 
             // txtPtoDestino
             // 
-            this.txtPtoDestino.Location = new System.Drawing.Point(165, 117);
+            this.txtPtoDestino.Location = new System.Drawing.Point(188, 122);
             this.txtPtoDestino.Name = "txtPtoDestino";
             this.txtPtoDestino.Size = new System.Drawing.Size(100, 20);
             this.txtPtoDestino.TabIndex = 7;
             // 
             // btnRegistrarViaje
             // 
-            this.btnRegistrarViaje.Location = new System.Drawing.Point(67, 226);
+            this.btnRegistrarViaje.Location = new System.Drawing.Point(126, 182);
             this.btnRegistrarViaje.Name = "btnRegistrarViaje";
             this.btnRegistrarViaje.Size = new System.Drawing.Size(75, 23);
             this.btnRegistrarViaje.TabIndex = 8;
             this.btnRegistrarViaje.Text = "Registrar";
             this.btnRegistrarViaje.UseVisualStyleBackColor = true;
+            this.btnRegistrarViaje.Click += new System.EventHandler(this.btnRegistrarViaje_Click);
             // 
             // btnSalirViaje
             // 
-            this.btnSalirViaje.Location = new System.Drawing.Point(162, 226);
+            this.btnSalirViaje.Location = new System.Drawing.Point(223, 182);
             this.btnSalirViaje.Name = "btnSalirViaje";
             this.btnSalirViaje.Size = new System.Drawing.Size(75, 23);
             this.btnSalirViaje.TabIndex = 9;
@@ -139,14 +117,14 @@
             // 
             // txtDescCliente
             // 
-            this.txtDescCliente.Location = new System.Drawing.Point(348, 94);
+            this.txtDescCliente.Location = new System.Drawing.Point(323, 122);
             this.txtDescCliente.Name = "txtDescCliente";
             this.txtDescCliente.Size = new System.Drawing.Size(100, 20);
             this.txtDescCliente.TabIndex = 10;
             // 
             // txtTiempoCliente
             // 
-            this.txtTiempoCliente.Location = new System.Drawing.Point(42, 167);
+            this.txtTiempoCliente.Location = new System.Drawing.Point(54, 121);
             this.txtTiempoCliente.Name = "txtTiempoCliente";
             this.txtTiempoCliente.Size = new System.Drawing.Size(100, 20);
             this.txtTiempoCliente.TabIndex = 11;
@@ -154,17 +132,48 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 151);
+            this.label6.Location = new System.Drawing.Point(51, 105);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(90, 13);
             this.label6.TabIndex = 13;
             this.label6.Text = "Tiempo estimado:";
             // 
+            // cmbIDConductor
+            // 
+            this.cmbIDConductor.FormattingEnabled = true;
+            this.cmbIDConductor.Location = new System.Drawing.Point(54, 55);
+            this.cmbIDConductor.Name = "cmbIDConductor";
+            this.cmbIDConductor.Size = new System.Drawing.Size(100, 21);
+            this.cmbIDConductor.TabIndex = 14;
+            this.cmbIDConductor.SelectedIndexChanged += new System.EventHandler(this.cmbIDConductor_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(320, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 15;
+            this.label2.Text = "Estado:";
+            // 
+            // txtEstado
+            // 
+            this.txtEstado.Location = new System.Drawing.Point(323, 55);
+            this.txtEstado.Name = "txtEstado";
+            this.txtEstado.ReadOnly = true;
+            this.txtEstado.Size = new System.Drawing.Size(100, 20);
+            this.txtEstado.TabIndex = 16;
+            this.txtEstado.Text = "EN CURSO";
+            // 
             // fmVistaCrearViaje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(571, 334);
+            this.ClientSize = new System.Drawing.Size(516, 233);
+            this.ControlBox = false;
+            this.Controls.Add(this.txtEstado);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.cmbIDConductor);
             this.Controls.Add(this.label6);
             this.Controls.Add(label5);
             this.Controls.Add(this.txtTiempoCliente);
@@ -173,14 +182,12 @@
             this.Controls.Add(this.btnRegistrarViaje);
             this.Controls.Add(this.txtPtoDestino);
             this.Controls.Add(this.txtPtoPartida);
-            this.Controls.Add(this.txtIDViaje);
-            this.Controls.Add(this.txtIDConductor);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaCrearViaje";
-            this.Text = "fmVistaCrearViaje";
+            this.Text = "Crear Viaje";
             this.Load += new System.EventHandler(this.fmVistaCrearViaje_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -190,11 +197,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtIDConductor;
-        private System.Windows.Forms.TextBox txtIDViaje;
         private System.Windows.Forms.TextBox txtPtoPartida;
         private System.Windows.Forms.TextBox txtPtoDestino;
         private System.Windows.Forms.Button btnRegistrarViaje;
@@ -202,5 +206,8 @@
         private System.Windows.Forms.TextBox txtDescCliente;
         private System.Windows.Forms.TextBox txtTiempoCliente;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbIDConductor;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtEstado;
     }
 }

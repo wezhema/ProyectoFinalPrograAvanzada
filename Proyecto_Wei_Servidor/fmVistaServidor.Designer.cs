@@ -129,6 +129,7 @@
             this.txtUsuarioAdmin.Name = "txtUsuarioAdmin";
             this.txtUsuarioAdmin.Size = new System.Drawing.Size(100, 20);
             this.txtUsuarioAdmin.TabIndex = 9;
+            this.txtUsuarioAdmin.TextChanged += new System.EventHandler(this.txtUsuarioAdmin_TextChanged);
             // 
             // txtPassAdmin
             // 
@@ -136,6 +137,7 @@
             this.txtPassAdmin.Name = "txtPassAdmin";
             this.txtPassAdmin.Size = new System.Drawing.Size(100, 20);
             this.txtPassAdmin.TabIndex = 10;
+            this.txtPassAdmin.UseSystemPasswordChar = true;
             // 
             // label3
             // 

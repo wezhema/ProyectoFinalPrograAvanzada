@@ -86,12 +86,6 @@
     <Compile Include="fmVistaRegistrarCuenta.Designer.cs">
       <DependentUpon>fmVistaRegistrarCuenta.cs</DependentUpon>
     </Compile>
-    <Compile Include="fmVistaVerViajes.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fmVistaVerViajes.Designer.cs">
-      <DependentUpon>fmVistaVerViajes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fmVistaCliente.resx">
@@ -102,9 +96,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="fmVistaRegistrarCuenta.resx">
       <DependentUpon>fmVistaRegistrarCuenta.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fmVistaVerViajes.resx">
-      <DependentUpon>fmVistaVerViajes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
