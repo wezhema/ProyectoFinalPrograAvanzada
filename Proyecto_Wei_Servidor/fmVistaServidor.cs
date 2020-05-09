@@ -119,7 +119,7 @@ namespace Proyecto_Wei_Servidor
 
                 case "Registrarse":
                     MensajeSocket<Conductor> mensajeRegistrarConductor = JsonConvert.DeserializeObject < MensajeSocket<Conductor>> (pMensaje);
-                    RegistrarConductor(mensajeRegistrarConductor.Valor, ref servidorStreamWriter);//Para registrar al conductor y devolver mensaje
+                    RegistrarConductor(mensajeRegistrarConductor.Valor, ref servidorStreamWriter);
                     break;
 
                 case "CrearViaje":
@@ -130,7 +130,7 @@ namespace Proyecto_Wei_Servidor
 
                 case "Desconectar":
                     MensajeSocket<Conductor> mensajeDesconectar = JsonConvert.DeserializeObject<MensajeSocket<Conductor>>(pMensaje);
-                    DesconectarConductor(mensajeDesconectar.Valor);//Se muestra el conductor en la variable Valor y muestra el mensaje
+                    DesconectarConductor(mensajeDesconectar.Valor);
                     break;
 
                 default:
