@@ -145,7 +145,7 @@ namespace Proyecto_Wei_Servidor
 
         private void RegistrarConductor(Conductor valoresRegistrar, ref StreamWriter servidorStreamWriter)
         {
-            MensajeSocket<bool> resultado = new MensajeSocket<bool>();
+            MensajeSocket<Conductor> resultado = new MensajeSocket<Conductor>();
         }
 
 
