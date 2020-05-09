@@ -50,6 +50,28 @@ namespace DataAccessLayer.Entidades
             clienteTCP.Close();
         }
 
+		public static void Registrar(Conductor conductor)
+		{
+			try
+			{
+				ipServidor = IPAddress.Parse("127.0.0.1");
+				clienteTCP = new TcpClient();
+				serverEndPoint = new IPEndPoint(ipServidor, 16830);
+				clienteTCP.Connect(serverEndPoint);
+
+				MensajeSocket<Conductor> mensajeConectar = new MensajeSocket<Conductor> { Mensaje = "Registrarse", Valor = conductor };
+
+				clienteStreamReader = new StreamReader(clienteTCP.GetStream());
+				clienteStreamWriter = new StreamWriter(clienteTCP.GetStream());
+				clienteStreamWriter.WriteLine(JsonConvert.SerializeObject(mensajeConectar));
+				clienteStreamWriter.Flush(); 
+			}
+			catch (SocketException ex)
+			{
+				throw;
+			}
+		}
+
     }
 
     
