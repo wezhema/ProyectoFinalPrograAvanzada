@@ -40,9 +40,10 @@
             this.lblEstadoCliente = new System.Windows.Forms.Label();
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnFinalizarViaje = new System.Windows.Forms.Button();
             this.dgvViajeActivo = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnFinalizarViaje = new System.Windows.Forms.Button();
+            this.btnRefrescar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViajeActivo)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -50,7 +51,7 @@
             // 
             // btnRegistrarCliente
             // 
-            this.btnRegistrarCliente.Location = new System.Drawing.Point(179, 177);
+            this.btnRegistrarCliente.Location = new System.Drawing.Point(280, 177);
             this.btnRegistrarCliente.Name = "btnRegistrarCliente";
             this.btnRegistrarCliente.Size = new System.Drawing.Size(75, 38);
             this.btnRegistrarCliente.TabIndex = 0;
@@ -60,7 +61,7 @@
             // 
             // btnLoginCliente
             // 
-            this.btnLoginCliente.Location = new System.Drawing.Point(29, 189);
+            this.btnLoginCliente.Location = new System.Drawing.Point(74, 177);
             this.btnLoginCliente.Name = "btnLoginCliente";
             this.btnLoginCliente.Size = new System.Drawing.Size(75, 38);
             this.btnLoginCliente.TabIndex = 1;
@@ -70,7 +71,7 @@
             // 
             // txtContraseniaCliente
             // 
-            this.txtContraseniaCliente.Location = new System.Drawing.Point(88, 105);
+            this.txtContraseniaCliente.Location = new System.Drawing.Point(137, 101);
             this.txtContraseniaCliente.Name = "txtContraseniaCliente";
             this.txtContraseniaCliente.Size = new System.Drawing.Size(156, 20);
             this.txtContraseniaCliente.TabIndex = 7;
@@ -78,7 +79,7 @@
             // 
             // txtUsuarioCliente
             // 
-            this.txtUsuarioCliente.Location = new System.Drawing.Point(88, 47);
+            this.txtUsuarioCliente.Location = new System.Drawing.Point(137, 43);
             this.txtUsuarioCliente.Name = "txtUsuarioCliente";
             this.txtUsuarioCliente.Size = new System.Drawing.Size(156, 20);
             this.txtUsuarioCliente.TabIndex = 6;
@@ -86,7 +87,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(85, 89);
+            this.label2.Location = new System.Drawing.Point(134, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(64, 13);
             this.label2.TabIndex = 5;
@@ -95,7 +96,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(85, 30);
+            this.label1.Location = new System.Drawing.Point(134, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(46, 13);
             this.label1.TabIndex = 4;
@@ -103,9 +104,9 @@
             // 
             // btnCrearViajeCliente
             // 
-            this.btnCrearViajeCliente.Location = new System.Drawing.Point(293, 79);
+            this.btnCrearViajeCliente.Location = new System.Drawing.Point(95, 135);
             this.btnCrearViajeCliente.Name = "btnCrearViajeCliente";
-            this.btnCrearViajeCliente.Size = new System.Drawing.Size(75, 23);
+            this.btnCrearViajeCliente.Size = new System.Drawing.Size(85, 27);
             this.btnCrearViajeCliente.TabIndex = 8;
             this.btnCrearViajeCliente.Text = "Crear viaje";
             this.btnCrearViajeCliente.UseVisualStyleBackColor = true;
@@ -113,7 +114,7 @@
             // 
             // btnSalirCliente
             // 
-            this.btnSalirCliente.Location = new System.Drawing.Point(827, 278);
+            this.btnSalirCliente.Location = new System.Drawing.Point(379, 443);
             this.btnSalirCliente.Name = "btnSalirCliente";
             this.btnSalirCliente.Size = new System.Drawing.Size(75, 23);
             this.btnSalirCliente.TabIndex = 9;
@@ -124,7 +125,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(26, 159);
+            this.label3.Location = new System.Drawing.Point(155, 136);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
             this.label3.TabIndex = 10;
@@ -133,7 +134,7 @@
             // lblEstadoCliente
             // 
             this.lblEstadoCliente.AutoSize = true;
-            this.lblEstadoCliente.Location = new System.Drawing.Point(75, 159);
+            this.lblEstadoCliente.Location = new System.Drawing.Point(204, 136);
             this.lblEstadoCliente.Name = "lblEstadoCliente";
             this.lblEstadoCliente.Size = new System.Drawing.Size(77, 13);
             this.lblEstadoCliente.TabIndex = 11;
@@ -141,7 +142,7 @@
             // 
             // btnDesconectar
             // 
-            this.btnDesconectar.Location = new System.Drawing.Point(110, 189);
+            this.btnDesconectar.Location = new System.Drawing.Point(179, 177);
             this.btnDesconectar.Name = "btnDesconectar";
             this.btnDesconectar.Size = new System.Drawing.Size(75, 38);
             this.btnDesconectar.TabIndex = 13;
@@ -151,32 +152,49 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnRefrescar);
+            this.groupBox1.Controls.Add(this.btnFinalizarViaje);
             this.groupBox1.Controls.Add(this.dgvViajeActivo);
-            this.groupBox1.Location = new System.Drawing.Point(460, 12);
+            this.groupBox1.Controls.Add(this.btnCrearViajeCliente);
+            this.groupBox1.Location = new System.Drawing.Point(12, 269);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(442, 251);
+            this.groupBox1.Size = new System.Drawing.Size(442, 168);
             this.groupBox1.TabIndex = 14;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Viaje Activo:";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
+            // 
+            // btnFinalizarViaje
+            // 
+            this.btnFinalizarViaje.Location = new System.Drawing.Point(245, 135);
+            this.btnFinalizarViaje.Name = "btnFinalizarViaje";
+            this.btnFinalizarViaje.Size = new System.Drawing.Size(85, 27);
+            this.btnFinalizarViaje.TabIndex = 9;
+            this.btnFinalizarViaje.Text = "Finalizar viaje";
+            this.btnFinalizarViaje.UseVisualStyleBackColor = true;
+            this.btnFinalizarViaje.Click += new System.EventHandler(this.btnFinalizarViaje_Click);
             // 
             // dgvViajeActivo
             // 
+            this.dgvViajeActivo.AllowUserToAddRows = false;
             this.dgvViajeActivo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvViajeActivo.Location = new System.Drawing.Point(7, 20);
+            this.dgvViajeActivo.Location = new System.Drawing.Point(20, 57);
             this.dgvViajeActivo.Name = "dgvViajeActivo";
-            this.dgvViajeActivo.Size = new System.Drawing.Size(421, 225);
+            this.dgvViajeActivo.Size = new System.Drawing.Size(404, 72);
             this.dgvViajeActivo.TabIndex = 0;
             this.dgvViajeActivo.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvViajeActivo_CellContentClick);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.btnFinalizarViaje);
             this.groupBox2.Controls.Add(this.btnRegistrarCliente);
+            this.groupBox2.Controls.Add(this.lblEstadoCliente);
+            this.groupBox2.Controls.Add(this.btnDesconectar);
+            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtContraseniaCliente);
             this.groupBox2.Controls.Add(this.label1);
             this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.btnLoginCliente);
             this.groupBox2.Controls.Add(this.txtUsuarioCliente);
-            this.groupBox2.Controls.Add(this.btnCrearViajeCliente);
             this.groupBox2.Location = new System.Drawing.Point(12, 12);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(442, 251);
@@ -185,28 +203,24 @@
             this.groupBox2.Text = "Inicio de sesión:";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
-            // btnFinalizarViaje
+            // btnRefrescar
             // 
-            this.btnFinalizarViaje.Location = new System.Drawing.Point(261, 177);
-            this.btnFinalizarViaje.Name = "btnFinalizarViaje";
-            this.btnFinalizarViaje.Size = new System.Drawing.Size(75, 38);
-            this.btnFinalizarViaje.TabIndex = 9;
-            this.btnFinalizarViaje.Text = "Finalizar viaje";
-            this.btnFinalizarViaje.UseVisualStyleBackColor = true;
-            this.btnFinalizarViaje.Click += new System.EventHandler(this.btnFinalizarViaje_Click);
+            this.btnRefrescar.Location = new System.Drawing.Point(20, 28);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(75, 23);
+            this.btnRefrescar.TabIndex = 10;
+            this.btnRefrescar.Text = "Refrescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // fmVistaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(933, 345);
+            this.ClientSize = new System.Drawing.Size(478, 478);
             this.ControlBox = false;
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.btnDesconectar);
-            this.Controls.Add(this.lblEstadoCliente);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.btnSalirCliente);
-            this.Controls.Add(this.btnLoginCliente);
             this.Controls.Add(this.groupBox2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaCliente";
@@ -217,7 +231,6 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -238,6 +251,7 @@
         private System.Windows.Forms.DataGridView dgvViajeActivo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnFinalizarViaje;
+        private System.Windows.Forms.Button btnRefrescar;
     }
 }
 

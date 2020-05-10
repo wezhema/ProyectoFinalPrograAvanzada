@@ -12,7 +12,6 @@ namespace Proyecto_Wei_Cliente
     {
         //Instancia de la base de datos
         DatosDB datos = new DatosDB();
-
         //Variables que almacenarán los datos del conductor
         Conductor conductor;
 
@@ -28,6 +27,7 @@ namespace Proyecto_Wei_Cliente
             //Al iniciar el form habilitamos el botón de registrarse
             btnRegistrarCliente.Enabled = true;
             btnFinalizarViaje.Enabled = false;
+            btnRefrescar.Enabled = false;
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -55,15 +55,19 @@ namespace Proyecto_Wei_Cliente
                         lblEstadoCliente.Text = "Conectado al servidor 127.0.0.1, 16830";//Cambia el label mostrando la conexión
                         //Los siguientes botones se habilitan:
                         btnDesconectar.Enabled = true;//Cerrar sesión
-                        btnCrearViajeCliente.Enabled = true;//Crear viaje
+                        if (/*datos.ViajeActivo() == null*/ dgvViajeActivo == null)//Verifica si hay viajes activos, si no habilita el botón de crear viaje
+                        {
+                            btnCrearViajeCliente.Enabled = true;//Crear viaje
+                        }
                         txtUsuarioCliente.ReadOnly = true;//Usuario solo lectura
                         txtContraseniaCliente.ReadOnly = true;//Contraseña solo lectura
                         //Los siguientes botones se deshabilitan:
                         btnLoginCliente.Enabled = false;//Iniciar sesión
                         btnRegistrarCliente.Enabled = false;//Registrarse
                         btnSalirCliente.Enabled = false;//El botón de salir (necesita cerrar sesión primero)
-                        dgvViajeActivo.DataSource = datos.ObtenerViajes();
+                        dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
                         btnFinalizarViaje.Enabled = true;
+                        btnRefrescar.Enabled = true;
                     }
                     else
                     {
@@ -95,8 +99,9 @@ namespace Proyecto_Wei_Cliente
             txtContraseniaCliente.ReadOnly = false;//Campo contraseña se vuelve editable
             //Los siguientes botones se deshabilitan:
             btnDesconectar.Enabled = false;//Cerrar sesión
-            btnCrearViajeCliente.Enabled = false;//Crear viaje
             dgvViajeActivo.Enabled = false;
+            btnFinalizarViaje.Enabled = false;
+            btnRefrescar.Enabled = false;
         }
 
         private void fmVistaCliente_Load(object sender, EventArgs e)
@@ -109,6 +114,7 @@ namespace Proyecto_Wei_Cliente
             //Al hacer click en Crear Viaje se muestra el formulario
             fmVistaCrearViaje vCrearViaje = new fmVistaCrearViaje();
             vCrearViaje.Show();
+            btnCrearViajeCliente.Enabled = false;
         }
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
@@ -145,27 +151,51 @@ namespace Proyecto_Wei_Cliente
 
         private void btnFinalizarViaje_Click(object sender, EventArgs e)
         {
-
             if (fmVistaServidor.servidorIniciado == true)
             {
                 //Llama el método para aprobar conductores
-                bool resultado = datos.FinalizarViaje();
+                bool resultado = datos.FinalizarViaje(txtUsuarioCliente.Text);
                 if (resultado)
                 {
-                    MessageBox.Show("Los viajes en curso han sido finalizados con éxito.", "Alerta");
+                    MessageBox.Show("El viaje en curso del usuario: "+ txtUsuarioCliente.Text + " ha sido finalizado con éxito.", "Alerta");
+                    btnCrearViajeCliente.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
                 }
 
-                dgvViajeActivo.DataSource = datos.FinalizarViaje();
+                dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
             }
             else
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
             
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listViajesActivos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
+
+            if (datos.ViajeActivo(txtUsuarioCliente.Text) == null)//Verifica si hay viajes activos, si no habilita el botón de crear viaje
+            {
+                btnCrearViajeCliente.Enabled = true;
+            }
+            else
+            {
+                btnCrearViajeCliente.Enabled = false;
+            }
         }
     }
 }

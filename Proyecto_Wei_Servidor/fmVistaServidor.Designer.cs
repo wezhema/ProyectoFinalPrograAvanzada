@@ -80,7 +80,7 @@
             // 
             // btnAprobarServidor
             // 
-            this.btnAprobarServidor.Location = new System.Drawing.Point(449, 163);
+            this.btnAprobarServidor.Location = new System.Drawing.Point(366, 161);
             this.btnAprobarServidor.Name = "btnAprobarServidor";
             this.btnAprobarServidor.Size = new System.Drawing.Size(107, 40);
             this.btnAprobarServidor.TabIndex = 3;
@@ -90,7 +90,7 @@
             // 
             // btnVerViajesServidor
             // 
-            this.btnVerViajesServidor.Location = new System.Drawing.Point(336, 163);
+            this.btnVerViajesServidor.Location = new System.Drawing.Point(253, 161);
             this.btnVerViajesServidor.Name = "btnVerViajesServidor";
             this.btnVerViajesServidor.Size = new System.Drawing.Size(107, 40);
             this.btnVerViajesServidor.TabIndex = 4;
@@ -135,7 +135,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(333, 13);
+            this.label3.Location = new System.Drawing.Point(250, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(110, 13);
             this.label3.TabIndex = 11;
@@ -143,7 +143,7 @@
             // 
             // btnSalirServidor
             // 
-            this.btnSalirServidor.Location = new System.Drawing.Point(594, 330);
+            this.btnSalirServidor.Location = new System.Drawing.Point(511, 330);
             this.btnSalirServidor.Name = "btnSalirServidor";
             this.btnSalirServidor.Size = new System.Drawing.Size(75, 23);
             this.btnSalirServidor.TabIndex = 12;
@@ -172,7 +172,7 @@
             // lstUsuariosConectados
             // 
             this.lstUsuariosConectados.FormattingEnabled = true;
-            this.lstUsuariosConectados.Location = new System.Drawing.Point(336, 36);
+            this.lstUsuariosConectados.Location = new System.Drawing.Point(253, 34);
             this.lstUsuariosConectados.Name = "lstUsuariosConectados";
             this.lstUsuariosConectados.Size = new System.Drawing.Size(333, 121);
             this.lstUsuariosConectados.TabIndex = 15;
@@ -194,14 +194,14 @@
             this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Location = new System.Drawing.Point(27, 235);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(192, 125);
+            this.groupBox2.Size = new System.Drawing.Size(192, 118);
             this.groupBox2.TabIndex = 17;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Información del servidor:";
             // 
             // btnHistorial
             // 
-            this.btnHistorial.Location = new System.Drawing.Point(562, 164);
+            this.btnHistorial.Location = new System.Drawing.Point(479, 162);
             this.btnHistorial.Name = "btnHistorial";
             this.btnHistorial.Size = new System.Drawing.Size(107, 39);
             this.btnHistorial.TabIndex = 18;
@@ -213,7 +213,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 365);
+            this.ClientSize = new System.Drawing.Size(607, 365);
             this.ControlBox = false;
             this.Controls.Add(this.btnHistorial);
             this.Controls.Add(this.lstUsuariosConectados);

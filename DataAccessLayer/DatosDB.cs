@@ -11,6 +11,7 @@ namespace DataAccessLayer
     {
         //Variable para almacenar el string de la DB
         private string cadena;
+        
         //Método para la conexión con el app config hacia la base de datos
         public DatosDB()
         {
@@ -198,12 +199,10 @@ namespace DataAccessLayer
                 {
                     return false;
                 }
-
                 conexion.Close();
             }
             catch (System.Exception)
             {
-
                 return false;
             }
             return true;
@@ -319,9 +318,49 @@ namespace DataAccessLayer
                     });
                 }
             }
-
             conexion.Close();
             return listaViajesPendientes;
+        }
+        //Método para obtener el viaje activo por usuario
+        public List<Viajes> ViajeActivo(string username)
+        {
+            List<Viajes> listaViajeActivo = new List<Viajes>();
+
+            SqlConnection conexion = new SqlConnection(cadena);
+            SqlCommand comando = new SqlCommand();
+            string sentenciaSQL;
+            SqlDataReader reader;
+
+            sentenciaSQL = @"SELECT* FROM Viajes WHERE Viajes.Id_Conductor = (SELECT TOP (1) Id_Conductor 
+                            FROM Conductor WHERE NombreUsuario = @username AND Viajes.Estado = 'EN CURSO')";
+
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = sentenciaSQL;
+            comando.Connection = conexion;
+            comando.Parameters.AddWithValue("@username", username);
+
+            conexion.Open();
+
+            reader = comando.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    listaViajeActivo.Add(new Viajes
+                    {
+                        Id_Conductor = reader.GetString(0),
+                        Id_Viaje = reader.GetInt32(1),
+                        PuntoPartida = reader.GetString(2),
+                        PuntoDestino = reader.GetString(3),
+                        Desc_Viaje = reader.GetString(4),
+                        Can_Horas = reader.GetString(5),
+                        Estado = reader.GetString(6),
+                    });
+                }
+            }
+            conexion.Close();
+            return listaViajeActivo;
         }
 
         //Método para consultar el historial de viajes
@@ -367,7 +406,7 @@ namespace DataAccessLayer
         }
 
         //Método finalizar viajes
-        public bool FinalizarViaje()
+        public bool FinalizarViaje(string username)
         {
             try
             {
@@ -375,11 +414,12 @@ namespace DataAccessLayer
                 SqlCommand comando = new SqlCommand();
                 string sentenciaSQL;//Variable que almacenara la sentencia
 
-                sentenciaSQL = @"UPDATE Viajes set Estado = 'FINALIZADO'";
+                sentenciaSQL = @"UPDATE Viajes SET Estado = 'FINALIZADO' WHERE Viajes.Id_Conductor = (SELECT TOP (1) Id_Conductor FROM Conductor WHERE NombreUsuario = @username AND Viajes.Estado = 'EN CURSO')";
 
                 comando.CommandType = CommandType.Text;
                 comando.CommandText = sentenciaSQL;
                 comando.Connection = conexion;
+                comando.Parameters.AddWithValue("@username", username);
 
                 conexion.Open();
 

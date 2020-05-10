@@ -54,14 +54,11 @@ namespace Proyecto_Wei_Cliente
                 {
                     MessageBox.Show("No puede haber campos vacíos.", "Error");
                 }
-                 
             }
             else
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
         }
-    
-    }
-    
+    }  
 }
