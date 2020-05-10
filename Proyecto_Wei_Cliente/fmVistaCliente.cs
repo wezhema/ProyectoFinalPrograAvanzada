@@ -55,10 +55,9 @@ namespace Proyecto_Wei_Cliente
                         lblEstadoCliente.Text = "Conectado al servidor 127.0.0.1, 16830";//Cambia el label mostrando la conexión
                         //Los siguientes botones se habilitan:
                         btnDesconectar.Enabled = true;//Cerrar sesión
-                        if (/*datos.ViajeActivo() == null*/ dgvViajeActivo == null)//Verifica si hay viajes activos, si no habilita el botón de crear viaje
-                        {
+
                             btnCrearViajeCliente.Enabled = true;//Crear viaje
-                        }
+                        
                         txtUsuarioCliente.ReadOnly = true;//Usuario solo lectura
                         txtContraseniaCliente.ReadOnly = true;//Contraseña solo lectura
                         //Los siguientes botones se deshabilitan:
@@ -201,15 +200,7 @@ namespace Proyecto_Wei_Cliente
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
             dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
-
-            if (datos.ViajeActivo(txtUsuarioCliente.Text) == null)//Verifica si hay viajes activos, si no habilita el botón de crear viaje
-            {
-                btnCrearViajeCliente.Enabled = true;
-            }
-            else
-            {
-                btnCrearViajeCliente.Enabled = false;
-            }
+            btnCrearViajeCliente.Enabled = true;//Crear viaje
         }
     }
 }
