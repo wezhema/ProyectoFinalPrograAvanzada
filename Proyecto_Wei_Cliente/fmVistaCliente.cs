@@ -119,7 +119,7 @@ namespace Proyecto_Wei_Cliente
 			}
 			else
 			{
-				MessageBox.Show("Este usuario ya tiene un viaje en curso.")
+				MessageBox.Show("Este usuario ya tiene un viaje en curso.");
 			}
         }
 
