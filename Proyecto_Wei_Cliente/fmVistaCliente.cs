@@ -27,6 +27,7 @@ namespace Proyecto_Wei_Cliente
             btnCrearViajeCliente.Enabled = false;
             //Al iniciar el form habilitamos el botón de registrarse
             btnRegistrarCliente.Enabled = true;
+            btnFinalizarViaje.Enabled = false;
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -62,6 +63,7 @@ namespace Proyecto_Wei_Cliente
                         btnRegistrarCliente.Enabled = false;//Registrarse
                         btnSalirCliente.Enabled = false;//El botón de salir (necesita cerrar sesión primero)
                         dgvViajeActivo.DataSource = datos.ObtenerViajes();
+                        btnFinalizarViaje.Enabled = true;
                     }
                     else
                     {
@@ -143,18 +145,27 @@ namespace Proyecto_Wei_Cliente
 
         private void btnFinalizarViaje_Click(object sender, EventArgs e)
         {
-            //Llama el método para aprobar conductores
-            bool resultado = datos.FinalizarViaje();
-            if (resultado)
+
+            if (fmVistaServidor.servidorIniciado == true)
             {
-                MessageBox.Show("Los viajes en curso han sido finalizados con éxito.", "Alerta");
+                //Llama el método para aprobar conductores
+                bool resultado = datos.FinalizarViaje();
+                if (resultado)
+                {
+                    MessageBox.Show("Los viajes en curso han sido finalizados con éxito.", "Alerta");
+                }
+                else
+                {
+                    MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
+                }
+
+                dgvViajeActivo.DataSource = datos.FinalizarViaje();
             }
             else
             {
-                MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
+                MessageBox.Show("No hay conexión al servidor.", "Error");
             }
-
-            dgvViajeActivo.DataSource = datos.FinalizarViaje();
+            
         }
     }
 }
