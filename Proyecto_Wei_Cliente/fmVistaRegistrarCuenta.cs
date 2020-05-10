@@ -12,16 +12,6 @@ namespace Proyecto_Wei_Cliente
             InitializeComponent();
         }
 
-        private void btnSalirRegistrarCuenta_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void fmVistaRegistrarCuenta_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnRegistrar_Click(object sender, EventArgs e)
         {
             if (fmVistaServidor.servidorIniciado == true)
@@ -53,9 +43,15 @@ namespace Proyecto_Wei_Cliente
             else
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
-            }
-            //Parámetros recibidos del cliente para ser introducidos en la base de datos posterior a ser enviados al servidor
-            
+            } 
+        }
+
+        private void btnSalirRegistrarCuenta_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void fmVistaRegistrarCuenta_Load(object sender, EventArgs e)
+        {
         }
     }
 }

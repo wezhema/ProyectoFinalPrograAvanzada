@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using System.Net.Sockets;
 using DataAccessLayer;
 using DataAccessLayer.Entidades;
-using System.Text;
 using Proyecto_Wei_Servidor;
 
 namespace Proyecto_Wei_Cliente
@@ -103,11 +101,6 @@ namespace Proyecto_Wei_Cliente
             btnRefrescar.Enabled = false;
         }
 
-        private void fmVistaCliente_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCrearViajeCliente_Click(object sender, EventArgs e)
         {
             if (datos.ValidarSoloUnViajePorConductor(txtUsuarioCliente.Text))
@@ -135,24 +128,6 @@ namespace Proyecto_Wei_Cliente
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
-
-        }
-
-        private void dgvViajeActivo_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void richtxtbox_TextChanged(object sender, EventArgs e)
-        {
-
-
-
         }
 
         private void btnFinalizarViaje_Click(object sender, EventArgs e)
@@ -160,7 +135,6 @@ namespace Proyecto_Wei_Cliente
             if (fmVistaServidor.servidorIniciado == true)
             {
                 //Llama el método para aprobar conductores
-
                 bool resultado = datos.FinalizarViaje(txtUsuarioCliente.Text);
                 if (resultado)
                 {
@@ -178,23 +152,36 @@ namespace Proyecto_Wei_Cliente
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listViajesActivos_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
             dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
             btnCrearViajeCliente.Enabled = true;//Crear viaje
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void listViajesActivos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void fmVistaCliente_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void dgvViajeActivo_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void groupBox2_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void richtxtbox_TextChanged(object sender, EventArgs e)
+        {
         }
     }
 }

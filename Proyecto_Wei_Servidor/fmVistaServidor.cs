@@ -8,7 +8,6 @@ using DataAccessLayer;
 using DataAccessLayer.Entidades;
 using System.IO;
 using Newtonsoft.Json;
-using System.Text;
 
 namespace Proyecto_Wei_Servidor
 {
@@ -32,7 +31,6 @@ namespace Proyecto_Wei_Servidor
             btnAprobarServidor.Enabled = false;//Aprobar conductores
             btnHistorial.Enabled = false;
             ListBoxClientes = new ListBoxDelegado(ModificarListBox);//La lista de delegados se instancia
-            
         }
 
         //Pasará los parámetros a la lista de delegados para mostrar los usuarios conectados
@@ -50,17 +48,11 @@ namespace Proyecto_Wei_Servidor
                 lstUsuariosConectados.Items.Remove(texto);
             }
         }
-        
 
         private void btnSalirServidor_Click(object sender, EventArgs e)
         {
             //Botón de salir, cierra la vista
             this.Close();
-        }
-
-        private void fmVistaServidor_Load(object sender, EventArgs e)
-        {
-
         }
 
         private void btnIniciarServidor_Click(object sender, EventArgs e)
@@ -77,7 +69,6 @@ namespace Proyecto_Wei_Servidor
             btnDetenerServidor.Enabled = true;//Se habilita el botón de deshabilitar
             lblServidor.Text = "Iniciado";//Ca,mbia el label
             btnSalirServidor.Enabled = false;
-
         }
 
         private void EscucharClientes()
@@ -220,10 +211,7 @@ namespace Proyecto_Wei_Servidor
             vAprobarClientes.Show();
         }
 
-        private void btnEnviarMsjServidor_Click(object sender, EventArgs e)
-        {
-           
-        }
+        
 
         private void dgtUsuariosConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -244,6 +232,14 @@ namespace Proyecto_Wei_Servidor
         {
             fmVistaHistorial vVistaHistorial = new fmVistaHistorial();
             vVistaHistorial.Show();
+        }
+
+        private void fmVistaServidor_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void btnEnviarMsjServidor_Click(object sender, EventArgs e)
+        {
         }
     }
 }

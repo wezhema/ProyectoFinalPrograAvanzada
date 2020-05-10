@@ -412,7 +412,7 @@ namespace DataAccessLayer
             {
                 SqlConnection conexion = new SqlConnection(cadena);
                 SqlCommand comando = new SqlCommand();
-                string sentenciaSQL;//Variable que almacenara la sentencia
+                string sentenciaSQL;
 
                 sentenciaSQL = @"UPDATE Viajes SET Estado = 'FINALIZADO' WHERE Viajes.Id_Conductor = (SELECT TOP (1) Id_Conductor FROM Conductor WHERE NombreUsuario = @username AND Viajes.Estado = 'EN CURSO')";
 
@@ -442,7 +442,7 @@ namespace DataAccessLayer
             return true;
         }
 
-
+        //Método para validar que el usaurio solo pueda tener 1 viaje activo
 		public bool ValidarSoloUnViajePorConductor(string username)
 		{
 			try
@@ -450,7 +450,7 @@ namespace DataAccessLayer
 				SqlConnection conexion = new SqlConnection(cadena);
 				SqlCommand comando = new SqlCommand();
 				SqlDataReader reader;
-				string sentenciaSQL;//Variable que almacenara la sentencia
+				string sentenciaSQL;
 				int count = 0;
 				sentenciaSQL = @"Select Count(*) FROM Viajes WHERE Viajes.Id_Conductor = (SELECT TOP (1) Id_Conductor FROM Conductor WHERE NombreUsuario = @username) AND Viajes.Estado = 'EN CURSO'";
 

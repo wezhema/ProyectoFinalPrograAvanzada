@@ -1,13 +1,6 @@
 ﻿using Proyecto_Wei_Cliente;
 using Proyecto_Wei_Servidor;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Proyecto_Wei_Principal
@@ -31,7 +24,6 @@ namespace Proyecto_Wei_Principal
                 fmVistaServidor vServidor = new fmVistaServidor();
                 vServidor.Show();
             }
-            
         }
 
         private void btnSalirPrincipal_Click(object sender, EventArgs e)
@@ -49,12 +41,10 @@ namespace Proyecto_Wei_Principal
 
         private void fmVistaPrincipal_Load(object sender, EventArgs e)
         {
-
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
-
         }
     }
 }

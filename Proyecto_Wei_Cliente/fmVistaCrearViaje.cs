@@ -23,20 +23,6 @@ namespace Proyecto_Wei_Cliente
 			cmbIDConductor.DisplayMember = "Id_Conductor";//Combo box que llama todos los ID de conductor de la BD
 		}
 
-		private void btnSalirViaje_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void fmVistaCrearViaje_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void cmbIDConductor_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void btnRegistrarViaje_Click(object sender, EventArgs e)
         {
             if(fmVistaServidor.servidorIniciado == true)
@@ -66,6 +52,18 @@ namespace Proyecto_Wei_Cliente
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
+        }
+
+        private void btnSalirViaje_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        private void fmVistaCrearViaje_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void cmbIDConductor_SelectedIndexChanged(object sender, EventArgs e)
+        {
         }
     }  
 }

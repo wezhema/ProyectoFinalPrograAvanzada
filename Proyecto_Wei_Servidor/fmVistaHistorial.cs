@@ -13,14 +13,13 @@ namespace Proyecto_Wei_Servidor
             dtvHistorial.DataSource = datos.ObtenerHistorial();
         }
 
-        private void fmVistaHistorial_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void fmVistaHistorial_Load(object sender, EventArgs e)
+        {
         }
     }
 }

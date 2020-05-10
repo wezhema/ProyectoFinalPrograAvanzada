@@ -19,11 +19,6 @@ namespace Proyecto_Wei_Servidor
             this.Close();
         }
 
-        private void dgtClientesSinAprobar_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-        }
-
         private void btnAprobarCliente_Click(object sender, EventArgs e)
         {
             //Llama el método para aprobar conductores
@@ -58,7 +53,10 @@ namespace Proyecto_Wei_Servidor
 
         private void fmVistaAprobarClientes_Load(object sender, EventArgs e)
         {
+        }
 
+        private void dgtClientesSinAprobar_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
         }
     }
 }
