@@ -442,5 +442,51 @@ namespace DataAccessLayer
             return true;
         }
 
+
+		public bool ValidarSoloUnViajePorConductor(string username)
+		{
+			try
+			{
+				SqlConnection conexion = new SqlConnection(cadena);
+				SqlCommand comando = new SqlCommand();
+				SqlDataReader reader;
+				string sentenciaSQL;//Variable que almacenara la sentencia
+				int count = 0;
+				sentenciaSQL = @"Select Count(*) FROM Viajes WHERE Viajes.Id_Conductor = (SELECT TOP (1) Id_Conductor FROM Conductor WHERE NombreUsuario = @username) AND Viajes.Estado = 'EN CURSO'";
+
+				comando.CommandType = CommandType.Text;
+				comando.CommandText = sentenciaSQL;
+				comando.Connection = conexion;
+				comando.Parameters.AddWithValue("@username", username);
+
+				conexion.Open();
+
+				reader = comando.ExecuteReader();
+
+				if (reader.HasRows)
+				{
+					while (reader.Read())
+					{
+						count = reader.GetInt32(0);
+					}
+				}
+
+				conexion.Close(); 
+
+				if (count == 0)
+				{
+					return true;
+				}
+				else
+				{
+					return false;
+				}
+			}
+			catch (System.Exception ex)
+			{
+				return false;
+			}
+			return true;
+		}
     }
 }

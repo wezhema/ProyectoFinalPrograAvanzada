@@ -153,19 +153,26 @@ namespace Proyecto_Wei_Cliente
         {
             if (fmVistaServidor.servidorIniciado == true)
             {
-                //Llama el método para aprobar conductores
-                bool resultado = datos.FinalizarViaje(txtUsuarioCliente.Text);
-                if (resultado)
-                {
-                    MessageBox.Show("El viaje en curso del usuario: "+ txtUsuarioCliente.Text + " ha sido finalizado con éxito.", "Alerta");
-                    btnCrearViajeCliente.Enabled = true;
-                }
-                else
-                {
-                    MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
-                }
+				//Llama el método para aprobar conductores
+				if (datos.ValidarSoloUnViajePorConductor(txtUsuarioCliente.Text))
+				{
+					bool resultado = datos.FinalizarViaje(txtUsuarioCliente.Text);
+					if (resultado)
+					{
+						MessageBox.Show("El viaje en curso del usuario: " + txtUsuarioCliente.Text + " ha sido finalizado con éxito.", "Alerta");
+						btnCrearViajeCliente.Enabled = true;
+					}
+					else
+					{
+						MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
+					} 
+				}
+				else
+				{
+					MessageBox.Show("Este conductor tiene un viaje en curso.", "Error");
+				}
 
-                dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
+				dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
             }
             else
             {
