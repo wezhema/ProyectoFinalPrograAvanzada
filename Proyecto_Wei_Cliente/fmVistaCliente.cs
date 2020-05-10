@@ -3,6 +3,8 @@ using System.Windows.Forms;
 using System.Net.Sockets;
 using DataAccessLayer;
 using DataAccessLayer.Entidades;
+using System.Text;
+using Proyecto_Wei_Servidor;
 
 namespace Proyecto_Wei_Cliente
 {
@@ -25,9 +27,6 @@ namespace Proyecto_Wei_Cliente
             btnCrearViajeCliente.Enabled = false;
             //Al iniciar el form habilitamos el botón de registrarse
             btnRegistrarCliente.Enabled = true;
-            
-            //FALTA
-            dgvViajeActivo.DataSource = datos.ObtenerViajes();
         }
 
         private void btnSalirCliente_Click(object sender, EventArgs e)
@@ -62,6 +61,7 @@ namespace Proyecto_Wei_Cliente
                         btnLoginCliente.Enabled = false;//Iniciar sesión
                         btnRegistrarCliente.Enabled = false;//Registrarse
                         btnSalirCliente.Enabled = false;//El botón de salir (necesita cerrar sesión primero)
+                        dgvViajeActivo.DataSource = datos.ObtenerViajes();
                     }
                     else
                     {
@@ -70,7 +70,7 @@ namespace Proyecto_Wei_Cliente
                 }
                 else
                 {
-                    MessageBox.Show("Fallo al iniciar sesión, datos incorrectos.", "Error");
+                    MessageBox.Show("Fallo al iniciar sesión, datos incorrectos o conexión no disponible.", "Error");
                 }
             }
             else
@@ -83,7 +83,7 @@ namespace Proyecto_Wei_Cliente
         {
             //Al hacer click en cerrar sesión:
             ClienteTCP.Desconectar(conductor);//Se desconecta de la conexión TCP
-            MessageBox.Show(string.Format("Desconexión con éxito.", "Cliente desconectado", MessageBoxButtons.OK, MessageBoxIcon.Information));
+            MessageBox.Show("Desconexión con éxito.", "Cliente desconectado");
             lblEstadoCliente.Text = "Desconectado";
             //Los siguientes botones se habilitan:
             btnRegistrarCliente.Enabled = true;//Registrarse
@@ -94,6 +94,7 @@ namespace Proyecto_Wei_Cliente
             //Los siguientes botones se deshabilitan:
             btnDesconectar.Enabled = false;//Cerrar sesión
             btnCrearViajeCliente.Enabled = false;//Crear viaje
+            dgvViajeActivo.Enabled = false;
         }
 
         private void fmVistaCliente_Load(object sender, EventArgs e)
@@ -110,9 +111,17 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
         {
-            //Al hacer click en Registrarse se muestra dicho formulario
-            fmVistaRegistrarCuenta vRegistrarCuenta = new fmVistaRegistrarCuenta();
-            vRegistrarCuenta.Show();
+            if (fmVistaServidor.servidorIniciado == true)
+            {
+                //Al hacer click en Registrarse se muestra dicho formulario
+                fmVistaRegistrarCuenta vRegistrarCuenta = new fmVistaRegistrarCuenta();
+                vRegistrarCuenta.Show();
+            }
+            else
+            {
+                MessageBox.Show("No hay conexión al servidor.", "Error");
+            }
+            
         }
 
         private void dgvViajeActivo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -123,6 +132,29 @@ namespace Proyecto_Wei_Cliente
         private void groupBox2_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void richtxtbox_TextChanged(object sender, EventArgs e)
+        {
+
+
+            
+        }
+
+        private void btnFinalizarViaje_Click(object sender, EventArgs e)
+        {
+            //Llama el método para aprobar conductores
+            bool resultado = datos.FinalizarViaje();
+            if (resultado)
+            {
+                MessageBox.Show("Los viajes en curso han sido finalizados con éxito.", "Alerta");
+            }
+            else
+            {
+                MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
+            }
+
+            dgvViajeActivo.DataSource = datos.FinalizarViaje();
         }
     }
 }

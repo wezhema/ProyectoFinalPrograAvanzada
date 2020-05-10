@@ -290,14 +290,13 @@ namespace DataAccessLayer
 
             SqlConnection conexion = new SqlConnection(cadena);
             SqlCommand comando = new SqlCommand();
-            string sentenciaSQL;//Variable que almacenara la sentencia
-            SqlDataReader reader;//Ejecuta sentencias SQL
+            string sentenciaSQL;
+            SqlDataReader reader;
 
-            sentenciaSQL = @"SELECT* FROM Viajes WHERE Estado = 'EN CURSO'";//falta poner la condicion para que llame solo los viajes de ese usuario
+            sentenciaSQL = @"SELECT* FROM Viajes WHERE Estado = 'EN CURSO'";
 
             comando.CommandType = CommandType.Text;
             comando.CommandText = sentenciaSQL;
-            //comando.Parameters.AddWithValue("@Id_Conductor", .Id_Conductor);
             comando.Connection = conexion;
 
             conexion.Open();
@@ -325,42 +324,83 @@ namespace DataAccessLayer
             return listaViajesPendientes;
         }
 
+        //Método para consultar el historial de viajes
+        public List<HistorialViajes> ObtenerHistorial()
+        {
+            List<HistorialViajes> listaObtenerHistorial = new List<HistorialViajes>();
 
-        //public List<Conductor> ObtenerIDConductor(Conductor conductor)
-        //{
-        //    List<Conductor> listaObtenerIDConductor = new List<Conductor>();
+            SqlConnection conexion = new SqlConnection(cadena);
+            SqlCommand comando = new SqlCommand();
+            string sentenciaSQL;
+            SqlDataReader reader;
 
-        //    SqlConnection conexion = new SqlConnection(cadena);
-        //    SqlCommand comando = new SqlCommand();
-        //    string sentenciaSQL;//Variable que almacenara la sentencia
-        //    SqlDataReader reader;//Ejecuta sentencias SQL
+            sentenciaSQL = @"SELECT* FROM HistorialViajes";
 
-        //    sentenciaSQL = @"SELECT Id_Conductor FROM Conductor WHERE NombreUsuario =  @Username";
+            comando.CommandType = CommandType.Text;
+            comando.CommandText = sentenciaSQL;
+            comando.Connection = conexion;
 
-        //    comando.CommandType = CommandType.Text;
-        //    comando.CommandText = sentenciaSQL;
-        //    comando.Parameters.AddWithValue("@Username", conductor.NombreUsuario);
-        //    comando.Connection = conexion;
+            conexion.Open();
 
-        //    conexion.Open();
+            reader = comando.ExecuteReader();
 
-        //    reader = comando.ExecuteReader();
+            if (reader.HasRows)
+            {
+                while (reader.Read())
+                {
+                    listaObtenerHistorial.Add(new HistorialViajes
+                    {
+                        Id_Conductor = reader.GetString(0),
+                        Id_Viaje = reader.GetString(1),
+                        PuntoPartida = reader.GetString(2),
+                        PuntoDestino = reader.GetString(3),
+                        Desc_Viaje = reader.GetString(4),
+                        Can_Horas = reader.GetString(5),
+                        Fecha = reader.GetString(6),
+                        Estado = reader.GetString(7),
+                    });
+                }
+            }
 
-        //    if (reader.HasRows)//Si hay datos los agrega a la lista para luego desplegarlas en la GUI
-        //    {
-        //        while (reader.Read())
-        //        {
-        //            listaObtenerIDConductor.Add(new Conductor
-        //            {
-        //                Id_Conductor = reader.GetInt32(0)
-        //            });
-        //        }
-        //    }
+            conexion.Close();
+            return listaObtenerHistorial;
+        }
 
-        //    conexion.Close();
-        //    return listaObtenerIDConductor;
-        //}
+        //Método finalizar viajes
+        public bool FinalizarViaje()
+        {
+            try
+            {
+                SqlConnection conexion = new SqlConnection(cadena);
+                SqlCommand comando = new SqlCommand();
+                string sentenciaSQL;//Variable que almacenara la sentencia
 
+                sentenciaSQL = @"UPDATE Viajes set Estado = 'FINALIZADO'";
+
+                comando.CommandType = CommandType.Text;
+                comando.CommandText = sentenciaSQL;
+                comando.Connection = conexion;
+
+                conexion.Open();
+
+                //Devuelve el número de líneas afectadas en la BD y almacena su dígito
+                int numeroLineasAfectadas = comando.ExecuteNonQuery();
+
+                //Si el resultado es 0 retorna falso y quiere decir que no hubo ningún dato afectado en la BD
+                if (numeroLineasAfectadas == 0)
+                {
+                    //False retornará un error o un message box en este caso desde la vista
+                    return false;
+                }
+
+                conexion.Close();
+            }
+            catch (System.Exception)
+            {
+                return false;
+            }
+            return true;
+        }
 
     }
 }

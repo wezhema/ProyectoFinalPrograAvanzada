@@ -77,6 +77,12 @@
     <Compile Include="fmVistaAprobarClientes.Designer.cs">
       <DependentUpon>fmVistaAprobarClientes.cs</DependentUpon>
     </Compile>
+    <Compile Include="fmVistaHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fmVistaHistorial.Designer.cs">
+      <DependentUpon>fmVistaHistorial.cs</DependentUpon>
+    </Compile>
     <Compile Include="fmVistaServidor.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="fmVistaAprobarClientes.resx">
       <DependentUpon>fmVistaAprobarClientes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fmVistaHistorial.resx">
+      <DependentUpon>fmVistaHistorial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fmVistaServidor.resx">
       <DependentUpon>fmVistaServidor.cs</DependentUpon>
@@ -127,10 +136,6 @@
     <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
       <Project>{c341d61d-8ca6-477f-bb78-e5f60aa3bfb2}</Project>
       <Name>DataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Proyecto_Wei_Cliente\Proyecto_Wei_Cliente.csproj">
-      <Project>{38e4ab82-b93e-4888-b198-2141b8ca232f}</Project>
-      <Name>Proyecto_Wei_Cliente</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

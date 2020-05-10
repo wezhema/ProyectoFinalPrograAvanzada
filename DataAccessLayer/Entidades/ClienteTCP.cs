@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net;
 using System.Net.Sockets;
 using Newtonsoft.Json;
@@ -36,7 +37,7 @@ namespace DataAccessLayer.Entidades
             }
             catch (SocketException ex)
             {
-                throw;
+                return false;
             }
         }
 
@@ -46,13 +47,11 @@ namespace DataAccessLayer.Entidades
             MensajeSocket<Conductor> mensajeDesconectar = new MensajeSocket<Conductor> { Mensaje = "Desconectar", Valor = conductor };
             clienteStreamWriter.WriteLine(JsonConvert.SerializeObject(mensajeDesconectar));
             clienteStreamWriter.Flush();
-            
-            //Función para cerrar la conexión TCP
-            clienteTCP.Close();
+
         }
 
         //Método para enviar los datos del registro del conductor
-		public static void Registrar(Conductor conductor)
+		public static bool Registrar(Conductor conductor)
 		{
 			try
 			{
@@ -66,16 +65,18 @@ namespace DataAccessLayer.Entidades
 				clienteStreamReader = new StreamReader(clienteTCP.GetStream());
 				clienteStreamWriter = new StreamWriter(clienteTCP.GetStream());
 				clienteStreamWriter.WriteLine(JsonConvert.SerializeObject(mensajeConectar));
-				clienteStreamWriter.Flush(); 
+				clienteStreamWriter.Flush();
+
+                return true;
 			}
-			catch (SocketException ex)
+			catch (Exception)
 			{
-				throw;
+                return false;
 			}
 		}
 
         //Método para enviar los datos del formulario al servidor sobre crear el viaje desde el conductor
-        public static void CrearViaje (Viajes viajes)
+        public static bool CrearViaje (Viajes viajes)
         {
             try
             {
@@ -90,10 +91,12 @@ namespace DataAccessLayer.Entidades
                 clienteStreamWriter = new StreamWriter(clienteTCP.GetStream());
                 clienteStreamWriter.WriteLine(JsonConvert.SerializeObject(mensajeCrearViaje));
                 clienteStreamWriter.Flush();
+
+                return true;
             }
             catch (SocketException ex)
             {
-                throw;
+                return false;
             }
         }
 

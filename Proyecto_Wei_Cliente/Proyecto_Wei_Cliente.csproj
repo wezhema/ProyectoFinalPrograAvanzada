@@ -125,6 +125,10 @@
       <Project>{c341d61d-8ca6-477f-bb78-e5f60aa3bfb2}</Project>
       <Name>DataAccessLayer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Proyecto_Wei_Servidor\Proyecto_Wei_Servidor.csproj">
+      <Project>{08d5161b-3140-4217-a95d-2109794abb5d}</Project>
+      <Name>Proyecto_Wei_Servidor</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

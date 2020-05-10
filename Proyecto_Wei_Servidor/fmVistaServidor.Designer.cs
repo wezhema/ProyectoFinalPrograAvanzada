@@ -33,7 +33,6 @@
             this.btnLoginServidor = new System.Windows.Forms.Button();
             this.btnAprobarServidor = new System.Windows.Forms.Button();
             this.btnVerViajesServidor = new System.Windows.Forms.Button();
-            this.btnEnviarMsjServidor = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsuarioAdmin = new System.Windows.Forms.TextBox();
@@ -45,6 +44,7 @@
             this.lstUsuariosConectados = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnHistorial = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,9 +80,9 @@
             // 
             // btnAprobarServidor
             // 
-            this.btnAprobarServidor.Location = new System.Drawing.Point(622, 284);
+            this.btnAprobarServidor.Location = new System.Drawing.Point(449, 163);
             this.btnAprobarServidor.Name = "btnAprobarServidor";
-            this.btnAprobarServidor.Size = new System.Drawing.Size(107, 37);
+            this.btnAprobarServidor.Size = new System.Drawing.Size(107, 40);
             this.btnAprobarServidor.TabIndex = 3;
             this.btnAprobarServidor.Text = "Aprobar conductores";
             this.btnAprobarServidor.UseVisualStyleBackColor = true;
@@ -90,23 +90,13 @@
             // 
             // btnVerViajesServidor
             // 
-            this.btnVerViajesServidor.Location = new System.Drawing.Point(480, 283);
+            this.btnVerViajesServidor.Location = new System.Drawing.Point(336, 163);
             this.btnVerViajesServidor.Name = "btnVerViajesServidor";
             this.btnVerViajesServidor.Size = new System.Drawing.Size(107, 40);
             this.btnVerViajesServidor.TabIndex = 4;
             this.btnVerViajesServidor.Text = "Ver viajes en curso";
             this.btnVerViajesServidor.UseVisualStyleBackColor = true;
             this.btnVerViajesServidor.Click += new System.EventHandler(this.btnVerViajesServidor_Click);
-            // 
-            // btnEnviarMsjServidor
-            // 
-            this.btnEnviarMsjServidor.Location = new System.Drawing.Point(336, 285);
-            this.btnEnviarMsjServidor.Name = "btnEnviarMsjServidor";
-            this.btnEnviarMsjServidor.Size = new System.Drawing.Size(100, 36);
-            this.btnEnviarMsjServidor.TabIndex = 6;
-            this.btnEnviarMsjServidor.Text = "Enviar mensaje";
-            this.btnEnviarMsjServidor.UseVisualStyleBackColor = true;
-            this.btnEnviarMsjServidor.Click += new System.EventHandler(this.btnEnviarMsjServidor_Click);
             // 
             // label1
             // 
@@ -153,7 +143,7 @@
             // 
             // btnSalirServidor
             // 
-            this.btnSalirServidor.Location = new System.Drawing.Point(651, 337);
+            this.btnSalirServidor.Location = new System.Drawing.Point(594, 330);
             this.btnSalirServidor.Name = "btnSalirServidor";
             this.btnSalirServidor.Size = new System.Drawing.Size(75, 23);
             this.btnSalirServidor.TabIndex = 12;
@@ -184,7 +174,7 @@
             this.lstUsuariosConectados.FormattingEnabled = true;
             this.lstUsuariosConectados.Location = new System.Drawing.Point(336, 36);
             this.lstUsuariosConectados.Name = "lstUsuariosConectados";
-            this.lstUsuariosConectados.Size = new System.Drawing.Size(390, 225);
+            this.lstUsuariosConectados.Size = new System.Drawing.Size(333, 121);
             this.lstUsuariosConectados.TabIndex = 15;
             // 
             // groupBox1
@@ -209,12 +199,23 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Información del servidor:";
             // 
+            // btnHistorial
+            // 
+            this.btnHistorial.Location = new System.Drawing.Point(562, 164);
+            this.btnHistorial.Name = "btnHistorial";
+            this.btnHistorial.Size = new System.Drawing.Size(107, 39);
+            this.btnHistorial.TabIndex = 18;
+            this.btnHistorial.Text = "Historial de viajes";
+            this.btnHistorial.UseVisualStyleBackColor = true;
+            this.btnHistorial.Click += new System.EventHandler(this.btnHistorial_Click);
+            // 
             // fmVistaServidor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(751, 388);
+            this.ClientSize = new System.Drawing.Size(700, 365);
             this.ControlBox = false;
+            this.Controls.Add(this.btnHistorial);
             this.Controls.Add(this.lstUsuariosConectados);
             this.Controls.Add(this.btnSalirServidor);
             this.Controls.Add(this.label3);
@@ -222,7 +223,6 @@
             this.Controls.Add(this.txtUsuarioAdmin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnEnviarMsjServidor);
             this.Controls.Add(this.btnVerViajesServidor);
             this.Controls.Add(this.btnAprobarServidor);
             this.Controls.Add(this.btnLoginServidor);
@@ -246,7 +246,6 @@
         private System.Windows.Forms.Button btnLoginServidor;
         private System.Windows.Forms.Button btnAprobarServidor;
         private System.Windows.Forms.Button btnVerViajesServidor;
-        private System.Windows.Forms.Button btnEnviarMsjServidor;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsuarioAdmin;
@@ -258,6 +257,7 @@
         private System.Windows.Forms.ListBox lstUsuariosConectados;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnHistorial;
     }
 }
 

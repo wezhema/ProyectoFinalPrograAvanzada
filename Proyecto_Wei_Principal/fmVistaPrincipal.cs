@@ -21,10 +21,17 @@ namespace Proyecto_Wei_Principal
 
         private void button2_Click(object sender, EventArgs e)
         {
-            //Llama a la vista del servidor y deshabilita su botón para que se ejecute 1 única vez
-            fmVistaServidor vServidor = new fmVistaServidor();
-            vServidor.Show();
-            btnServidorPrincipal.Enabled = false;
+            if((Application.OpenForms["fmVistaServidor"] as fmVistaServidor) != null)
+            {
+                MessageBox.Show("El servidor ya se está ejecutando.", "Error");
+            }
+            else
+            {
+                //Llama a la vista del servidor y deshabilita su botón para que se ejecute 1 única vez
+                fmVistaServidor vServidor = new fmVistaServidor();
+                vServidor.Show();
+            }
+            
         }
 
         private void btnSalirPrincipal_Click(object sender, EventArgs e)
@@ -41,6 +48,11 @@ namespace Proyecto_Wei_Principal
         }
 
         private void fmVistaPrincipal_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
         }

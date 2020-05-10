@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using DataAccessLayer;
 using DataAccessLayer.Entidades;
+using Proyecto_Wei_Servidor;
 
 namespace Proyecto_Wei_Cliente
 {
@@ -31,20 +32,36 @@ namespace Proyecto_Wei_Cliente
 
         private void btnRegistrarViaje_Click(object sender, EventArgs e)
         {
-            //Parámetros recibidos del cliente para ser introducidos en la base de datos posterior a ser enviados al servidor
-            Viajes viaje = new Viajes()
+            if(fmVistaServidor.servidorIniciado == true)
             {
-                Id_Conductor = cmbIDConductor.Text,
-                PuntoPartida = txtPtoPartida.Text,
-                PuntoDestino = txtPtoDestino.Text,
-                Desc_Viaje = txtDescCliente.Text,
-                Can_Horas = txtTiempoCliente.Text,
-                Estado = txtEstado.Text,
-            };
-            ClienteTCP.CrearViaje(viaje);
-            this.Close();
-            MessageBox.Show("Viaje registrado con éxito.", "Atención");//Mensaje de éxito
+                if (!string.IsNullOrEmpty(cmbIDConductor.Text) && !string.IsNullOrEmpty(txtPtoPartida.Text) && !string.IsNullOrEmpty(txtPtoDestino.Text) && !string.IsNullOrEmpty(txtDescCliente.Text) && !string.IsNullOrEmpty(txtTiempoCliente.Text) && !string.IsNullOrEmpty(txtEstado.Text) && !string.IsNullOrEmpty(txtEstado.Text))
+                {
+                    //Parámetros recibidos del cliente para ser introducidos en la base de datos posterior a ser enviados al servidor
+                    Viajes viaje = new Viajes()
+                    {
+                        Id_Conductor = cmbIDConductor.Text,
+                        PuntoPartida = txtPtoPartida.Text,
+                        PuntoDestino = txtPtoDestino.Text,
+                        Desc_Viaje = txtDescCliente.Text,
+                        Can_Horas = txtTiempoCliente.Text,
+                        Estado = txtEstado.Text,
+                    };
+                    ClienteTCP.CrearViaje(viaje);
+                    this.Close();
+                    MessageBox.Show("Viaje registrado con éxito.", "Atención");//Mensaje de éxito
+                }
+                else
+                {
+                    MessageBox.Show("No puede haber campos vacíos.", "Error");
+                }
+                 
+            }
+            else
+            {
+                MessageBox.Show("No hay conexión al servidor.", "Error");
+            }
         }
+    
     }
     
 }

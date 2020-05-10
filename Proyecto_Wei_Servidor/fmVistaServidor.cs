@@ -8,6 +8,7 @@ using DataAccessLayer;
 using DataAccessLayer.Entidades;
 using System.IO;
 using Newtonsoft.Json;
+using System.Text;
 
 namespace Proyecto_Wei_Servidor
 {
@@ -15,7 +16,7 @@ namespace Proyecto_Wei_Servidor
     {
         TcpListener tcpListener;//Comando para escuchar clientes TCP
         Thread subprocesoEscucharClientes;//Subproceso que se utilizará para escuchar clientes
-        bool servidorIniciado;//Bool para retornar si el servidor está iniciado o no
+        public static bool servidorIniciado;//Bool para retornar si el servidor está iniciado o no
         ListBoxDelegado ListBoxClientes;//Se utiliza una lista de delegados para mostrar los conductores conectados
 
         DatosDB datos = new DatosDB();//Se instancia la DB
@@ -27,10 +28,11 @@ namespace Proyecto_Wei_Servidor
             btnIniciarServidor.Enabled = false;//Inicio del servidor
             btnIniciarServidor.ForeColor = Color.Green;//El color se pone en verde para cuando esté disponible
             btnDetenerServidor.Enabled = false;//Detener servidor
-            btnEnviarMsjServidor.Enabled = false;//Enviar mensaje
             btnVerViajesServidor.Enabled = false;//Ver viajes
             btnAprobarServidor.Enabled = false;//Aprobar conductores
+            btnHistorial.Enabled = false;
             ListBoxClientes = new ListBoxDelegado(ModificarListBox);//La lista de delegados se instancia
+            
         }
 
         //Pasará los parámetros a la lista de delegados para mostrar los usuarios conectados
@@ -74,6 +76,7 @@ namespace Proyecto_Wei_Servidor
             btnDetenerServidor.ForeColor = Color.Red;
             btnDetenerServidor.Enabled = true;//Se habilita el botón de deshabilitar
             lblServidor.Text = "Iniciado";//Ca,mbia el label
+            btnSalirServidor.Enabled = false;
 
         }
 
@@ -82,10 +85,17 @@ namespace Proyecto_Wei_Servidor
             tcpListener.Start();//Inicia el TCP
             while (servidorIniciado)//La acción se queda detenida hasta que un cliente se conecte al servidor
             {
-                TcpClient client = tcpListener.AcceptTcpClient();//Cuando el cliente se conecta devuelve el llamado y lo almacena en la variable
+                try
+                {
+                    TcpClient client = tcpListener.AcceptTcpClient();//Cuando el cliente se conecta devuelve el llamado y lo almacena en la variable
 
-                Thread clientThread = new Thread(new ParameterizedThreadStart(ComunicacionCliente));//Administra la comunicación con el cliente
-                clientThread.Start(client);
+                    Thread clientThread = new Thread(new ParameterizedThreadStart(ComunicacionCliente));//Administra la comunicación con el cliente
+                    clientThread.Start(client);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
             }
         }
 
@@ -133,9 +143,6 @@ namespace Proyecto_Wei_Servidor
                     CrearViaje(mensajeCrearViaje.Valor, ref servidorStreamWriter);
                     break;
 
-                case "VerViaje":
-                    break;
-
                 case "Desconectar":
                     MensajeSocket<Conductor> mensajeDesconectar = JsonConvert.DeserializeObject<MensajeSocket<Conductor>>(pMensaje);
                     DesconectarConductor(mensajeDesconectar.Valor);
@@ -174,6 +181,7 @@ namespace Proyecto_Wei_Servidor
             tcpListener.Stop();
             btnIniciarServidor.Enabled = true;
             btnDetenerServidor.Enabled = false;
+            btnSalirServidor.Enabled = true;
             lblServidor.Text = "Desconectado";
         }
 
@@ -185,19 +193,24 @@ namespace Proyecto_Wei_Servidor
                 if (datos.LoginAdministrador(txtUsuarioAdmin.Text, txtPassAdmin.Text))
                 {
                     MessageBox.Show("Inicio de sesión con éxito.", "Administrador conectado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    //Habilita todos los botones excepto el de iniciar sesión
                     btnLoginServidor.Enabled = false;
                     txtUsuarioAdmin.ReadOnly = true;
                     txtPassAdmin.ReadOnly = true;
-                    btnEnviarMsjServidor.Enabled = true;
                     btnVerViajesServidor.Enabled = true;
                     btnAprobarServidor.Enabled = true;
                     lstUsuariosConectados.Enabled = true;
                     btnIniciarServidor.Enabled = true;
+                    btnHistorial.Enabled = true;
                 }
                 else
                 {
-                    MessageBox.Show("Fallo al iniciar sesión.", "Error intente de nuevo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Fallo al iniciar sesión.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            else
+            {
+                MessageBox.Show("Los campos no pueden estar vacíos.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -209,6 +222,7 @@ namespace Proyecto_Wei_Servidor
 
         private void btnEnviarMsjServidor_Click(object sender, EventArgs e)
         {
+           
         }
 
         private void dgtUsuariosConectados_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -224,6 +238,12 @@ namespace Proyecto_Wei_Servidor
 
         private void txtUsuarioAdmin_TextChanged(object sender, EventArgs e)
         {
+        }
+
+        private void btnHistorial_Click(object sender, EventArgs e)
+        {
+            fmVistaHistorial vVistaHistorial = new fmVistaHistorial();
+            vVistaHistorial.Show();
         }
     }
 }

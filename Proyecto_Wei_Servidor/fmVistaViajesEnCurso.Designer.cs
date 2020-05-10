@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvViajesEnCurso = new System.Windows.Forms.DataGridView();
             this.btnSalirViajesEnCurso = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViajesEnCurso)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -43,13 +43,14 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Viajes en curso:";
             // 
-            // dataGridView1
+            // dgvViajesEnCurso
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(16, 47);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(761, 369);
-            this.dataGridView1.TabIndex = 1;
+            this.dgvViajesEnCurso.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvViajesEnCurso.Location = new System.Drawing.Point(16, 47);
+            this.dgvViajesEnCurso.Name = "dgvViajesEnCurso";
+            this.dgvViajesEnCurso.Size = new System.Drawing.Size(761, 369);
+            this.dgvViajesEnCurso.TabIndex = 1;
+            this.dgvViajesEnCurso.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnSalirViajesEnCurso
             // 
@@ -67,12 +68,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 471);
             this.Controls.Add(this.btnSalirViajesEnCurso);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvViajesEnCurso);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "fmVistaViajesEnCurso";
             this.Text = "Viajes en curso";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.fmVistaViajesEnCurso_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvViajesEnCurso)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -81,7 +83,7 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvViajesEnCurso;
         private System.Windows.Forms.Button btnSalirViajesEnCurso;
     }
 }
