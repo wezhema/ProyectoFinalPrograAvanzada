@@ -39,7 +39,7 @@ namespace Proyecto_Wei_Cliente
         private void btnLoginCliente_Click(object sender, EventArgs e)
         {
             // Si el campo esta rellenado, continue, si no, arroja error
-            if (!string.IsNullOrEmpty(txtUsuarioCliente.Text) && !string.IsNullOrEmpty(txtUsuarioCliente.Text) && !string.IsNullOrEmpty(txtContraseniaCliente.Text)) 
+            if (!string.IsNullOrEmpty(txtUsuarioCliente.Text) && !string.IsNullOrEmpty(txtUsuarioCliente.Text) && !string.IsNullOrEmpty(txtContraseniaCliente.Text))
             {
                 //Si los datos coinciden con la base de datos, continue
                 if (datos.LoginCliente(txtUsuarioCliente.Text, txtContraseniaCliente.Text))
@@ -56,8 +56,8 @@ namespace Proyecto_Wei_Cliente
                         //Los siguientes botones se habilitan:
                         btnDesconectar.Enabled = true;//Cerrar sesión
 
-                            btnCrearViajeCliente.Enabled = true;//Crear viaje
-                        
+                        btnCrearViajeCliente.Enabled = true;//Crear viaje
+
                         txtUsuarioCliente.ReadOnly = true;//Usuario solo lectura
                         txtContraseniaCliente.ReadOnly = true;//Contraseña solo lectura
                         //Los siguientes botones se deshabilitan:
@@ -110,17 +110,17 @@ namespace Proyecto_Wei_Cliente
 
         private void btnCrearViajeCliente_Click(object sender, EventArgs e)
         {
-			if (datos.ValidarSoloUnViajePorConductor(txtUsuarioCliente.Text))
-			{
-				//Al hacer click en Crear Viaje se muestra el formulario
-				fmVistaCrearViaje vCrearViaje = new fmVistaCrearViaje();
-				vCrearViaje.Show();
-				btnCrearViajeCliente.Enabled = false; 
-			}
-			else
-			{
-				MessageBox.Show("Este usuario ya tiene un viaje en curso.");
-			}
+            if (datos.ValidarSoloUnViajePorConductor(txtUsuarioCliente.Text))
+            {
+                //Al hacer click en Crear Viaje se muestra el formulario
+                fmVistaCrearViaje vCrearViaje = new fmVistaCrearViaje();
+                vCrearViaje.Show();
+                btnCrearViajeCliente.Enabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Este usuario ya tiene un viaje en curso.", "Error");
+            }
         }
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)
@@ -135,7 +135,7 @@ namespace Proyecto_Wei_Cliente
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
-            
+
         }
 
         private void dgvViajeActivo_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -152,39 +152,33 @@ namespace Proyecto_Wei_Cliente
         {
 
 
-            
+
         }
 
         private void btnFinalizarViaje_Click(object sender, EventArgs e)
         {
             if (fmVistaServidor.servidorIniciado == true)
             {
-				//Llama el método para aprobar conductores
-				if (datos.ValidarSoloUnViajePorConductor(txtUsuarioCliente.Text))
-				{
-					bool resultado = datos.FinalizarViaje(txtUsuarioCliente.Text);
-					if (resultado)
-					{
-						MessageBox.Show("El viaje en curso del usuario: " + txtUsuarioCliente.Text + " ha sido finalizado con éxito.", "Alerta");
-						btnCrearViajeCliente.Enabled = true;
-					}
-					else
-					{
-						MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
-					} 
-				}
-				else
-				{
-					MessageBox.Show("Este conductor tiene un viaje en curso.", "Error");
-				}
+                //Llama el método para aprobar conductores
 
-				dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
+                bool resultado = datos.FinalizarViaje(txtUsuarioCliente.Text);
+                if (resultado)
+                {
+                    MessageBox.Show("El viaje en curso del usuario: " + txtUsuarioCliente.Text + " ha sido finalizado con éxito.", "Alerta");
+                    btnCrearViajeCliente.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Error, no hay viajes por finalizar.", "Error");
+                }
+
+                dgvViajeActivo.DataSource = datos.ViajeActivo(txtUsuarioCliente.Text);
             }
             else
             {
                 MessageBox.Show("No hay conexión al servidor.", "Error");
             }
-            
+
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)

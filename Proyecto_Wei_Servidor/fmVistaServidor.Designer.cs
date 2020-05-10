@@ -119,6 +119,7 @@
             // txtUsuarioAdmin
             // 
             this.txtUsuarioAdmin.Location = new System.Drawing.Point(69, 49);
+            this.txtUsuarioAdmin.MaxLength = 50;
             this.txtUsuarioAdmin.Name = "txtUsuarioAdmin";
             this.txtUsuarioAdmin.Size = new System.Drawing.Size(100, 20);
             this.txtUsuarioAdmin.TabIndex = 9;
@@ -127,6 +128,7 @@
             // txtPassAdmin
             // 
             this.txtPassAdmin.Location = new System.Drawing.Point(69, 88);
+            this.txtPassAdmin.MaxLength = 50;
             this.txtPassAdmin.Name = "txtPassAdmin";
             this.txtPassAdmin.Size = new System.Drawing.Size(100, 20);
             this.txtPassAdmin.TabIndex = 10;

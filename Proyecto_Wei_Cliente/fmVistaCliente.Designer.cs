@@ -40,10 +40,10 @@
             this.lblEstadoCliente = new System.Windows.Forms.Label();
             this.btnDesconectar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnRefrescar = new System.Windows.Forms.Button();
             this.btnFinalizarViaje = new System.Windows.Forms.Button();
             this.dgvViajeActivo = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnRefrescar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvViajeActivo)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -72,6 +72,7 @@
             // txtContraseniaCliente
             // 
             this.txtContraseniaCliente.Location = new System.Drawing.Point(137, 101);
+            this.txtContraseniaCliente.MaxLength = 50;
             this.txtContraseniaCliente.Name = "txtContraseniaCliente";
             this.txtContraseniaCliente.Size = new System.Drawing.Size(156, 20);
             this.txtContraseniaCliente.TabIndex = 7;
@@ -80,6 +81,7 @@
             // txtUsuarioCliente
             // 
             this.txtUsuarioCliente.Location = new System.Drawing.Point(137, 43);
+            this.txtUsuarioCliente.MaxLength = 50;
             this.txtUsuarioCliente.Name = "txtUsuarioCliente";
             this.txtUsuarioCliente.Size = new System.Drawing.Size(156, 20);
             this.txtUsuarioCliente.TabIndex = 6;
@@ -164,6 +166,16 @@
             this.groupBox1.Text = "Viaje Activo:";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // btnRefrescar
+            // 
+            this.btnRefrescar.Location = new System.Drawing.Point(20, 28);
+            this.btnRefrescar.Name = "btnRefrescar";
+            this.btnRefrescar.Size = new System.Drawing.Size(75, 23);
+            this.btnRefrescar.TabIndex = 10;
+            this.btnRefrescar.Text = "Refrescar";
+            this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
+            // 
             // btnFinalizarViaje
             // 
             this.btnFinalizarViaje.Location = new System.Drawing.Point(245, 135);
@@ -202,16 +214,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Inicio de sesión:";
             this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
-            // 
-            // btnRefrescar
-            // 
-            this.btnRefrescar.Location = new System.Drawing.Point(20, 28);
-            this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(75, 23);
-            this.btnRefrescar.TabIndex = 10;
-            this.btnRefrescar.Text = "Refrescar";
-            this.btnRefrescar.UseVisualStyleBackColor = true;
-            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // fmVistaCliente
             // 

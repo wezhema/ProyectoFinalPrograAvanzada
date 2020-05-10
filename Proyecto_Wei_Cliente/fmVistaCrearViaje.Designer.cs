@@ -85,6 +85,7 @@
             // txtPtoPartida
             // 
             this.txtPtoPartida.Location = new System.Drawing.Point(188, 55);
+            this.txtPtoPartida.MaxLength = 50;
             this.txtPtoPartida.Name = "txtPtoPartida";
             this.txtPtoPartida.Size = new System.Drawing.Size(100, 20);
             this.txtPtoPartida.TabIndex = 6;
@@ -92,6 +93,7 @@
             // txtPtoDestino
             // 
             this.txtPtoDestino.Location = new System.Drawing.Point(188, 122);
+            this.txtPtoDestino.MaxLength = 50;
             this.txtPtoDestino.Name = "txtPtoDestino";
             this.txtPtoDestino.Size = new System.Drawing.Size(100, 20);
             this.txtPtoDestino.TabIndex = 7;
@@ -119,6 +121,7 @@
             // txtDescCliente
             // 
             this.txtDescCliente.Location = new System.Drawing.Point(323, 122);
+            this.txtDescCliente.MaxLength = 50;
             this.txtDescCliente.Name = "txtDescCliente";
             this.txtDescCliente.Size = new System.Drawing.Size(100, 20);
             this.txtDescCliente.TabIndex = 10;
@@ -126,6 +129,7 @@
             // txtTiempoCliente
             // 
             this.txtTiempoCliente.Location = new System.Drawing.Point(54, 121);
+            this.txtTiempoCliente.MaxLength = 2;
             this.txtTiempoCliente.Name = "txtTiempoCliente";
             this.txtTiempoCliente.Size = new System.Drawing.Size(100, 20);
             this.txtTiempoCliente.TabIndex = 11;

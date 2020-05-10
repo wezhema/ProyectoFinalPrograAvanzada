@@ -486,7 +486,6 @@ namespace DataAccessLayer
 			{
 				return false;
 			}
-			return true;
 		}
     }
 }
