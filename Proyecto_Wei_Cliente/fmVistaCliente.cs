@@ -111,10 +111,17 @@ namespace Proyecto_Wei_Cliente
 
         private void btnCrearViajeCliente_Click(object sender, EventArgs e)
         {
-            //Al hacer click en Crear Viaje se muestra el formulario
-            fmVistaCrearViaje vCrearViaje = new fmVistaCrearViaje();
-            vCrearViaje.Show();
-            btnCrearViajeCliente.Enabled = false;
+			if (datos.ValidarSoloUnViajePorConductor(txtUsuarioCliente.Text))
+			{
+				//Al hacer click en Crear Viaje se muestra el formulario
+				fmVistaCrearViaje vCrearViaje = new fmVistaCrearViaje();
+				vCrearViaje.Show();
+				btnCrearViajeCliente.Enabled = false; 
+			}
+			else
+			{
+				MessageBox.Show("Este usuario ya tiene un viaje en curso.")
+			}
         }
 
         private void btnRegistrarCliente_Click(object sender, EventArgs e)

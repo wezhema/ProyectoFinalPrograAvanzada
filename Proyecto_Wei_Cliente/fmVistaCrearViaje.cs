@@ -16,7 +16,14 @@ namespace Proyecto_Wei_Cliente
             cmbIDConductor.DisplayMember = "Id_Conductor";//Combo box que llama todos los ID de conductor de la BD
         }
 
-        private void btnSalirViaje_Click(object sender, EventArgs e)
+		public fmVistaCrearViaje(string userName)
+		{
+			InitializeComponent();
+			cmbIDConductor.DataSource = datos.ObtenerConductores();
+			cmbIDConductor.DisplayMember = "Id_Conductor";//Combo box que llama todos los ID de conductor de la BD
+		}
+
+		private void btnSalirViaje_Click(object sender, EventArgs e)
         {
             this.Close();
         }
